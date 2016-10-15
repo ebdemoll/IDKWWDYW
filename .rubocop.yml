@@ -559,7 +559,7 @@ Style/HashSyntax:
   PreferHashRocketsForNonAlnumEndingSymbols: false
 
 Style/IfUnlessModifier:
-  MaxLineLength: 200
+  MaxLineLength: 300
 
 Style/IndentationConsistency:
   # The difference between `rails` and `normal` is that the `rails` style

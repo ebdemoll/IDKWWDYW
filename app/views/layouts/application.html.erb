@@ -4,16 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-
-    <%= stylesheet_link_tag    "application" %>
+    <title><%= content_for?(:title) ? yield(:title) : "IDKWDYW" %></title>
+    <link href="https://fonts.googleapis.com/css?family=Hind|Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-
-    <%= yield %>
-
+  <body class="">
+    <header class="header">
+      <h1 class="headline"> IDKWDYW <small>by Liz D.</small></h1>
+      <div class="user-info">
+        <% if current_user %>
+          <div class="login-name">
+            <h4>Signed in as <%= current_user.email %></a></h4>
+            <div class="user-buttons">
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <ul class="header-subnav">
+        <li><a href="#">Take Action!</a></li>
+        <li><a href="#" class="is-active">Carpe Diem!</a></li>
+        <li><a target="_blank" href="http://zurb.com/responsive">Just do it!</a></li>
+      </ul>
+    </header>
+    <% flash.each do |key, value| %>
+      <div class="flash-container">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="main-page">
+      <%= yield %>
+    </div>
   </body>
 </html>

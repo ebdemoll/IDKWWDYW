@@ -28,7 +28,6 @@ require 'factory_girl_rails'
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
-
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
@@ -55,7 +54,8 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     # :rack_test driver's Rack app under test shares database connection
     # with the specs, so continue to use transaction strategy for speed.
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    driver_shares_db_connection_with_specs = \
+      Capybara.current_driver == :rack_test
 
     unless driver_shares_db_connection_with_specs
       # Driver is probably for an external browser with an app
@@ -66,6 +66,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    # DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
   end
 

@@ -1,7 +1,7 @@
 
-<% @usergroups.each do |group| %>
-  <%= link_to group.name, usergroup_path(group) %>
-<% end %>
+
+  <%= link_to @usergroup.name, @usergroup %>
+
 
 
 <div class="back-link top-padded">

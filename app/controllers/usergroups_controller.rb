@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 class UsergroupsController < ApplicationController
   def index
-    @usergroups = Usergroup.all
-    @membership= Membership.find_by(user_id: current_user.id)
-    if @membership != nil
-      @usergroup = Usergroup.find_by(id: @membership.usergroup_id)
+    @membership = Membership.find_by(user_id: current_user.id)
+    unless @membership.nil?
+        @usergroup = Usergroup.find_by(id: @membership.usergroup_id)
     end
   end
 
@@ -15,7 +14,7 @@ class UsergroupsController < ApplicationController
   def create
     @usergroup = Usergroup.new(usergroup_params)
     if @usergroup.save
-      redirect_to new_usergroup_membership_path
+      redirect_to new_usergroup_membership_path(@usergroup)
       flash[:notice] = "Group added successfully"
     else
       flash[:notice] = @usergroup.errors.full_messages.join(", ")

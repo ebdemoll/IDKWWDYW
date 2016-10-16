@@ -1,0 +1,11 @@
+<% if current_user %>
+    <%= form_for [@usergroup, @membership] do |f| %>
+    <div class="field" hidden = "true">
+      <%= f.text_field :user_id, value: current_user.id %>
+    </div>
+    <div class="field" hidden = "true">
+      <%= f.text_field :usergroup_id, value: @usergroup.id %>
+    </div>
+       <%= f.submit "Join" %>
+    <% end %>
+<% end %>

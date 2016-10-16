@@ -1,1 +1,9 @@
-test
+<% unless @usergroups.nil? %>
+  <% @usergroups.each do |usergroup| %>
+    <%= link_to usergroup.name, usergroup %>
+  <% end %>
+<% end %>
+
+<div class="back-link top-padded">
+
+</div>

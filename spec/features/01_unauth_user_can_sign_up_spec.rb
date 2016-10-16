@@ -16,6 +16,8 @@ describe 'Unauth user can sign in' do
       click_link 'Sign up'
 
       expect(page).to have_field('Email')
+      fill_in 'First name', with: 'test'
+      fill_in 'Last name', with: 'name'
       expect(page).to have_field('Password')
       expect(page).to have_field('Password confirmation')
     end
@@ -25,6 +27,8 @@ describe 'Unauth user can sign in' do
       click_link 'Sign up'
 
       fill_in 'Email', with: 'test_user@gmail.com'
+      fill_in 'First name', with: 'test'
+      fill_in 'Last name', with: 'name'
       fill_in 'Password', with: 'scooped'
       fill_in 'Password confirmation', with: 'scooped'
 
@@ -36,6 +40,8 @@ describe 'Unauth user can sign in' do
     scenario 'User enters email that is already in the system' do
       User.create(
         email: 'second_user@gmail.com',
+        first_name: 'test',
+        last_name: 'test',
         password: 'scooped'
       )
 
@@ -43,6 +49,8 @@ describe 'Unauth user can sign in' do
       click_link 'Sign up'
 
       fill_in 'Email', with: 'second_user@gmail.com'
+      fill_in 'First name', with: 'test'
+      fill_in 'Last name', with: 'name'
       fill_in 'Password', with: 'scooped'
       fill_in 'Password confirmation', with: 'scooped'
 
@@ -56,6 +64,8 @@ describe 'Unauth user can sign in' do
       click_link 'Sign up'
 
       fill_in 'Email', with: 'third_user@gmail.com'
+      fill_in 'First name', with: 'test'
+      fill_in 'Last name', with: 'name'
       fill_in 'Password', with: 'scooped'
       fill_in 'Password confirmation', with: 'blahbl'
 
@@ -71,6 +81,8 @@ describe 'Unauth user can sign in' do
       click_link 'Sign up'
 
       fill_in 'Email', with: 'fourth_user@gmail.com'
+      fill_in 'First name', with: 'test'
+      fill_in 'Last name', with: 'name'
       fill_in 'Password', with: 'scoop'
       fill_in 'Password confirmation', with: 'scoop'
 

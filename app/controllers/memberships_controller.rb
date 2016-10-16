@@ -1,17 +1,23 @@
-Class MembershipsController < ApplicationController
+class MembershipsController < ApplicationController
+  def index
+  end
+
+  def show
+  end
+  
   def new
-    @group = Group.find params[:group_id]
-    @membership = Membership.new({group: group})
+    @usergroup = Usergroup.find(params[:usergroup_id])
+    @membership = Membership.new
   end
 
   def create
-    @group = Group.find params[:group_id]
+    @usergroup = Usergroup.find(params[:usergroup_id])
     @membership = Membership.new(membership_params)
   end
 
   private
 
   def membership_params
-      params.require(:membership).merge(group_id: params[:group_id], user_id: current_user.id)
+      params.require(:membership).permit(:usergroup_id, :user_id)
   end
 end

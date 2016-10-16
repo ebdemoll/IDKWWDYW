@@ -1,7 +1,6 @@
-test
 
-<% if @usergroup != nil %>
-  <%= @usergroup.name %>
+<% @usergroups.each do |group| %>
+  <%= link_to group.name, usergroup_path(group) %>
 <% end %>
 
 

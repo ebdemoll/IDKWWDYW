@@ -1,1 +1,10 @@
 test
+
+<% if @usergroup != nil %>
+  <%= @usergroup.name %>
+<% end %>
+
+
+<div class="back-link top-padded">
+  <%= link_to 'Add New Group', new_usergroup_path, method: :get %>
+</div>

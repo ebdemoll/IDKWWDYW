@@ -11,7 +11,8 @@ class MembershipsController < ApplicationController
     end
 
     def create
-      @membership = Membership.create(membership_params)
+      @membership = Membership.new(membership_params)
+      @membership.save
       flash[:notice] = "Joined group successfully"
       redirect_to usergroups_path
     end

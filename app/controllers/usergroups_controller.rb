@@ -3,7 +3,8 @@ class UsergroupsController < ApplicationController
   def index
     @membership = Membership.find_by(user_id: current_user.id)
     unless @membership.nil?
-        @usergroup = Usergroup.find_by(id: @membership.usergroup_id)
+        @usergroups = []
+        @usergroups << Usergroup.find_by(id: @membership.usergroup_id)
     end
   end
 
@@ -21,9 +22,16 @@ class UsergroupsController < ApplicationController
       render :new
     end
   end
-
   def show
     @usergroup = Usergroup.find(params[:id])
+    @membership = Membership.find_by(usergroup_id: @usergroup.id)
+    if @membership.user_id == current_user.id
+      @members = []
+      @members << User.find_by(id: @membership.user_id)
+    else
+      redirect_to usergroups_path
+      flash[:notice] = "You Do Not Belong to That Group"
+    end
   end
 
  private

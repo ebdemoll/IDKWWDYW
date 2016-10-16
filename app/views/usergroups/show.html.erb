@@ -1,0 +1,6 @@
+
+<h3> <%= @usergroup.name %> <h3>
+
+<% @members.each do |member| %>
+  <%= member.email %>
+<% end %>

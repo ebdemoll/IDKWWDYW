@@ -1,9 +1,9 @@
-
-
-  <%= link_to @usergroup.name, @usergroup %>
-
-
+<% unless @usergroups.nil? %>
+  <% @usergroups.each do |usergroup| %>
+    <%= link_to usergroup.name, usergroup %>
+  <% end %>
+<% end %>
 
 <div class="back-link top-padded">
-  <%= link_to 'Add New Group', new_usergroup_path, method: :get %>
+
 </div>

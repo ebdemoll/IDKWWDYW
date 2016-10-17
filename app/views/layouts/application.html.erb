@@ -31,7 +31,9 @@
       <ul class="header-subnav">
         <li> <%= link_to 'Add New Group', new_usergroup_path, method: :get, class:"header-button" %></li>
         <li><%= link_to 'Your Groups', usergroups_path, method: :get, class:"header-button" %></li>
-        <li><%= link_to 'Your Profile', user_path(current_user), method: :get, class:"header-button" %></li>
+        <% if current_user %>
+          <li><%= link_to 'Your Profile', user_path(current_user), method: :get, class:"header-button" %></li>
+        <% end %>
       </ul>
     </header>
     <% flash.each do |key, value| %>

@@ -15,13 +15,15 @@ class UsergroupsController < ApplicationController
   def create
     @usergroup = Usergroup.new(usergroup_params)
     if @usergroup.save
-      redirect_to new_usergroup_membership_path(@usergroup)
+      session[:uid] = @usergroup.id
+      redirect_to '/memberships/create'
       flash[:notice] = "Group added successfully"
     else
       flash[:notice] = @usergroup.errors.full_messages.join(", ")
       render :new
     end
   end
+
   def show
     @usergroup = Usergroup.find(params[:id])
     @membership = Membership.find_by(usergroup_id: @usergroup.id)

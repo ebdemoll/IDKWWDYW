@@ -6,29 +6,34 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "IDKWDYW" %></title>
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="">
+  <body class="body">
     <header class="header">
-      <h1 class="headline"> I Don't Know - What Do You Want?<br></h1>
+      <h1 class="headline"> "I Don't Know - What Do You Want?""<br></h1>
+      <h4 class="headline-sub"> The Solution to Every Couple's Worst Nothing Fight <h4>
       <div class="user-info">
         <% if current_user %>
           <div class="login-name">
-            <h4>Signed in as <%= current_user.email %></a></h4>
+            <h4 class="signed-in-as">Signed in as <%= current_user.email %></a></h4>
             <div class="user-buttons">
-              <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"sign-out-button" %>
             </div>
           </div>
         <% end %>
       </div>
       <ul class="header-subnav">
-        <li> <%= link_to 'Add New Group', new_usergroup_path, method: :get %></li>
-        <li><a href="#" class="is-active">Carpe Diem!</a></li>
-        <li><a target="_blank" href="http://zurb.com/responsive">Just do it!</a></li>
+        <li> <%= link_to 'Add New Group', new_usergroup_path, method: :get, class:"header-button" %></li>
+        <li><%= link_to 'Your Groups', usergroups_path, method: :get, class:"header-button" %></li>
+        <% if current_user %>
+          <li><%= link_to 'Your Profile', user_path(current_user), method: :get, class:"header-button" %></li>
+        <% end %>
       </ul>
     </header>
     <% flash.each do |key, value| %>

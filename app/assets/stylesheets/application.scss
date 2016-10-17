@@ -15,18 +15,29 @@
  *= require foundation_and_overrides
 
  */
+ .body {
+   background-color: #E4DED0;
+ }
  .header {
     text-align: center;
-    background: #0E2430;
+    background: #7DBEB8;
     background-size: cover;
     position: relative;
     overflow: visible;
     padding-top: 2.5rem;
-    padding-bottom: 4.9rem; }
+    padding-bottom: 4.9rem;
+    box-shadow: 0 -1px 10px 2px black;
+  }
 
 .header .headline {
-    color: #ffe;
-    font-family: 'Fredericka the Great'}
+    color:  lighten(#E4DED0, 10%);
+    font-family: 'Flamenco';
+  }
+
+.header .headline-sub {
+  color:  lighten(#E4DED0, 10%);
+  font-family: 'Flamenco';
+}
 
 .header-subnav {
     float: none;
@@ -34,7 +45,8 @@
     text-align: center;
     margin: 0 auto;
     bottom: 0;
-    width: 100%; }
+    width: 100%;
+  }
 
 .header-subnav li {
    float: none;
@@ -43,7 +55,7 @@
 .header-subnav li a {
    padding: 0.9rem 1rem;
    font-size: 0.75rem;
-   color: #ffe;
+   color: black;
    text-transform: uppercase;
    display: block;
    font-weight: bold;
@@ -56,3 +68,54 @@
 .header-subnav li a:hover {
    background: rgba(250, 250, 250, 0.15);
    transition: all 0.35s ease-in-out; }
+
+.login-name {
+  display: inline-block;
+
+}
+
+.signed-in-as {
+  color: lighten(#E4DED0, 5%);
+  font-family: 'Flamenco';
+  font-size: 18px;
+  display: inline-block;
+}
+
+.sign-out-button {
+  background-color: #E4DED0;
+  font-family: 'Flamenco';
+  font-size: 16px;
+  display: inline-block;
+}
+
+.header-button {
+  background-color: #E4DED0;
+  font-family: 'Flamenco';
+}
+
+.show-header {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Flamenco';
+}
+
+.no-top-padding {
+  text-align: center;
+}
+
+.field {
+  width: 40%;
+  margin: auto;
+}
+
+.submit-button {
+  background-color: #ABCCBD;
+}
+
+.show-profile {
+  padding-left: 50px;
+}
+
+.groups-list {
+  padding-left: 100px;
+}

@@ -45,7 +45,8 @@
     text-align: center;
     margin: 0 auto;
     bottom: 0;
-    width: 100%; }
+    width: 100%;
+  }
 
 .header-subnav li {
    float: none;
@@ -69,8 +70,7 @@
    transition: all 0.35s ease-in-out; }
 
 .login-name {
-  float: right;
-  ;
+  display: inline-block;
 
 }
 
@@ -78,12 +78,14 @@
   color: lighten(#E4DED0, 5%);
   font-family: 'Flamenco';
   font-size: 18px;
+  display: inline-block;
 }
 
 .sign-out-button {
   background-color: #E4DED0;
   font-family: 'Flamenco';
   font-size: 16px;
+  display: inline-block;
 }
 
 .header-button {
@@ -104,4 +106,16 @@
 .field {
   width: 40%;
   margin: auto;
+}
+
+.submit-button {
+  background-color: #ABCCBD;
+}
+
+.show-profile {
+  padding-left: 50px;
+}
+
+.groups-list {
+  padding-left: 100px;
 }

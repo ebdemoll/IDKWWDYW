@@ -1,5 +1,7 @@
 <h1 class="show-header"> Groups You Belong To </h1>
 
-<% @usergroups.each do |usergroup| %>
-  <li> <%= usergroup.name %></li>
-<% end %>
+<div class="groups-list">
+  <% @usergroups.each do |usergroup| %>
+    <li> <%= usergroup.name %></li>
+  <% end %>
+</div>

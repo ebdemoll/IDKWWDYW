@@ -1,1 +1,5 @@
-usergroups index page
+<h3> Groups You Belong To </h3>
+
+<% @usergroups.each do |usergroup| %>
+  <li> <%= usergroup.name %></li>
+<% end %>

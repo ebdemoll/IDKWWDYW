@@ -15,18 +15,29 @@
  *= require foundation_and_overrides
 
  */
+ .body {
+   background-color: #E4DED0;
+ }
  .header {
     text-align: center;
-    background: #0E2430;
+    background: #7DBEB8;
     background-size: cover;
     position: relative;
     overflow: visible;
     padding-top: 2.5rem;
-    padding-bottom: 4.9rem; }
+    padding-bottom: 4.9rem;
+    box-shadow: 0 -1px 10px 2px black;
+  }
 
 .header .headline {
-    color:  #E8D5B9;
-    font-family: 'Fredericka the Great'}
+    color:  lighten(#E4DED0, 10%);
+    font-family: 'Flamenco';
+  }
+
+.header .headline-sub {
+  color:  lighten(#E4DED0, 10%);
+  font-family: 'Flamenco';
+}
 
 .header-subnav {
     float: none;
@@ -43,7 +54,7 @@
 .header-subnav li a {
    padding: 0.9rem 1rem;
    font-size: 0.75rem;
-   color: #ffe;
+   color: black;
    text-transform: uppercase;
    display: block;
    font-weight: bold;
@@ -64,13 +75,33 @@
 }
 
 .signed-in-as {
-  color: #E8D5B9;
+  color: lighten(#E4DED0, 5%);
   font-family: 'Flamenco';
   font-size: 18px;
 }
 
 .sign-out-button {
-  background-color: #E8D5B9;
+  background-color: #E4DED0;
   font-family: 'Flamenco';
   font-size: 16px;
+}
+
+.header-button {
+  background-color: #E4DED0;
+  font-family: 'Flamenco';
+}
+
+.show-header {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Flamenco';
+}
+
+.no-top-padding {
+  text-align: center;
+}
+
+.field {
+  width: 40%;
+  margin: auto;
 }

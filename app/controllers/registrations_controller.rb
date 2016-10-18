@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
     @token = params[:invite_token] #<-- pulls the value from the url query string
-
+    @user = User.new
     super
   end
 

@@ -1,0 +1,7 @@
+<h1 class="show-header"> <%= @usergroup.name %></h1> <br>
+
+<div> <h4> Group Members </h4>
+<% @memberships.each do |member| %>
+  <li><%= member.first_name  %> </li>
+<% end %>
+</div<

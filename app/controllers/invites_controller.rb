@@ -16,6 +16,7 @@ class InvitesController < ApplicationController
       @invite.sender_id = current_user.id # set the sender to the current user
       if @invite.save
          InviteMailer.new_user_invite(@invite, new_user_registration_path(:invite_token => @invite.token)).deliver #send the invite data to our mailer to deliver the email
+         flash[:notice] = "Invite Sent"
          redirect_to usergroups_path
       else
         flash[:notice] = "Invite Did NOT Send"

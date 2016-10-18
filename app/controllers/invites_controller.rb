@@ -12,7 +12,6 @@ class InvitesController < ApplicationController
   end
 
   def create
-      binding.pry
       @invite = Invite.new(invite_params) # Make a new Invite
       @invite.sender_id = current_user.id # set the sender to the current user
       if @invite.save

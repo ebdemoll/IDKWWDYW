@@ -10,8 +10,9 @@ class RegistrationsController < Devise::RegistrationsController
     @newUser.save
     @token = params[:invite_token]
     if @token != nil
-       org =  Invite.find_by(token: @token)
-       membership = Membership.new(usergroup_id: org, user_id: current_user.id) #add this user to the new user group as a member
+       org =  Invite.find_by_token(@token).usergroup
+       membership = Membership.new(usergroup_id: org.id, user_id: @newUser.id) #add this user to the new user group as a member
+       membership.save
     end
     flash[:notice] = "You have successfully joined the group"
     redirect_to usergroups_path

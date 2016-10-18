@@ -7,12 +7,12 @@ class InvitesController < ApplicationController
   end
 
   def new
-    session[:uid]
+    @usergroup_id = session[:uid]
     @invite = Invite.new
   end
 
   def create
-    session[:uid]
+    @usergroup_id = session[:uid]
     @invite = Invite.new(invite_params) # Make a new Invite
     @invite.sender_id = current_user.id # set the sender to the current user
     if @invite.save
@@ -27,6 +27,6 @@ class InvitesController < ApplicationController
   private
 
   def invite_params
-    params.require(:invite).permit(:name, :usergroup_id)
+    params.require(:invite).permit(:name)
   end
 end

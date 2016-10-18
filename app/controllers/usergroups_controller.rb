@@ -8,6 +8,18 @@ class UsergroupsController < ApplicationController
     end
   end
 
+  def show
+    @usergroup = Usergroup.find(params[:id])
+    @membership = Membership.find_by(usergroup_id: @usergroup.id)
+    if @membership.user_id == current_user.id
+      @memberships = []
+      @memberships << User.find_by(id: @membership.user_id)
+    else
+      redirect_to usergroups_path
+      flash[:notice] = "You Do Not Belong to That Group"
+    end
+  end
+
   def new
     @usergroup = Usergroup.new
   end
@@ -24,16 +36,10 @@ class UsergroupsController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @usergroup = Usergroup.find(params[:id])
-    @membership = Membership.find_by(usergroup_id: @usergroup.id)
-    if @membership.user_id == current_user.id
-      @memberships = []
-      @memberships << User.find_by(id: @membership.user_id)
-    else
-      redirect_to usergroups_path
-      flash[:notice] = "You Do Not Belong to That Group"
-    end
+    session[:uid] = @usergroup.id
+    redirect_to '/invites/new'
   end
 
  private

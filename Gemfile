@@ -20,6 +20,8 @@ gem 'figaro'
 gem 'fog'
 gem 'pry'
 gem 'cancancan', '~> 1.9'
+gem 'dotenv'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'capybara'

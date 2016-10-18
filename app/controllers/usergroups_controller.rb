@@ -38,8 +38,7 @@ class UsergroupsController < ApplicationController
 
   def edit
     @usergroup = Usergroup.find(params[:id])
-    session[:uid] = @usergroup.id
-    redirect_to '/invites/new'
+    @invite = Invite.new
   end
 
  private

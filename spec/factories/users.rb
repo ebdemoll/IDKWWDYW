@@ -5,5 +5,6 @@ FactoryGirl.define do
     provider "google"
     sequence(:uid) { |n| n }
     sequence(:name) { |n| "foobington#{n}" }
+    sequence(:email) { |n| "foobington#{n}@gmail.com" }
   end
 end

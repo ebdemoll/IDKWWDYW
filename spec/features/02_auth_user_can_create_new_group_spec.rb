@@ -23,7 +23,19 @@ describe 'Unauth user can sign in' do
       fill_in 'Name', with: 'TestGroup'
       click_button 'Add New Group'
 
-      expect(page).to have_content 'Group joined successfully'
+      expect(page).to have_content "Group made and joined successfully!"
     end
+
+    scenario 'User can add new group successfully' do
+      login_with_facebook("DaveTirio")
+      visit root_path
+      click_link 'Add New Group'
+      fill_in 'Name', with: 'TestGroup'
+      click_button 'Add New Group'
+      click_link'Your Groups'
+
+      expect(page).to have_content "TestGroup"
+    end
+
   end
 end

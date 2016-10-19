@@ -7,7 +7,7 @@ class InvitesController < ApplicationController
   end
 
   def new
-    @usergroup_id = Usergroup.find(params[:id])
+    @usergroup_id = session[:uid]
     @invite = Invite.new
   end
 
@@ -15,12 +15,12 @@ class InvitesController < ApplicationController
       @invite = Invite.new(invite_params)
       @invite.sender_id = current_user.id
       if @invite.save
-         InviteMailer.new_user_invite(@invite, new_user_registration_path(:invite_token => @invite.token)).deliver
+         InviteMailer.new_user_invite(@invite, sessions_path(:invite_token => @invite.token)).deliver
          flash[:notice] = "Invite Sent"
          redirect_to usergroups_path
       else
         flash[:notice] = "Invite Did NOT Send"
-        redirect_to new_invite_path
+        redirect_to usergroups_path
       end
    end
 
@@ -29,4 +29,5 @@ class InvitesController < ApplicationController
   def invite_params
     params.require(:invite).permit(:usergroup_id, :email)
   end
+
 end

@@ -10,6 +10,7 @@ class UsergroupsController < ApplicationController
 
   def show
     @usergroup = Usergroup.find(params[:id])
+    session[:uid] = @usergroup.id
     @membership = Membership.find_by(usergroup_id: @usergroup.id)
     if @membership.user_id == current_user.id
       @memberships = []
@@ -38,6 +39,7 @@ class UsergroupsController < ApplicationController
 
   def edit
     @usergroup = Usergroup.find(params[:id])
+    session[:uid] = @usergroup.id
     @invite = Invite.new
   end
 

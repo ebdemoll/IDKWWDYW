@@ -14,8 +14,6 @@ describe 'Unauth user can sign in' do
     end
 
     scenario 'User can click signup button' do
-      visit '/'
-      sign_in_as user_1
 
       expect(page).to have_content('Signed in as #{user_1.name}')
     end

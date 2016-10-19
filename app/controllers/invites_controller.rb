@@ -7,7 +7,7 @@ class InvitesController < ApplicationController
   end
 
   def new
-    @usergroup_id = session[:uid]
+    @usergroup_id = session[:ugid]
     @invite = Invite.new
   end
 

@@ -14,6 +14,7 @@ class InvitesController < ApplicationController
   def create
       @invite = Invite.new(invite_params)
       @invite.sender_id = current_user.id
+      binding.pry
       if @invite.save
          InviteMailer.new_user_invite(@invite, sessions_path(:invite_token => @invite.token)).deliver
          flash[:notice] = "Invite Sent"

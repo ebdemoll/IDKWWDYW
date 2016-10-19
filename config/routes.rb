@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  root 'usergroups#index'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
+
+  root to: "home#show"
 
   resources :usergroups
 
@@ -9,7 +16,5 @@ Rails.application.routes.draw do
 
   resources :memberships
 
-  # devise_for :users, :controllers => {:registrations => "registrations"}
 
-  devise_for :users, controllers: {registration: 'users/registration'}
 end

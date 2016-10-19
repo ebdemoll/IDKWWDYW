@@ -4,7 +4,6 @@ source 'https://rubygems.org/'
 ruby "2.3.1"
 
 gem 'foundation-rails'
-gem 'devise'
 gem 'httpclient'
 gem 'json'
 gem 'rubocop'
@@ -19,7 +18,7 @@ gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'figaro'
 gem 'fog'
 gem 'pry'
-gem 'cancancan', '~> 1.9'
+gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'dotenv'
 gem 'dotenv-rails'
 

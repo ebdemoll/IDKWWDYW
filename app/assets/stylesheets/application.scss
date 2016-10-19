@@ -32,11 +32,13 @@
 .header .headline {
     color:  lighten(#E4DED0, 10%);
     font-family: 'Flamenco';
+    text-shadow: 1px 1px 1px black;
   }
 
 .header .headline-sub {
   color:  lighten(#E4DED0, 10%);
   font-family: 'Flamenco';
+  text-shadow: 1px 1px 1px black;
 }
 
 .header-subnav {
@@ -90,7 +92,7 @@
 }
 
 .header-button {
-  background-color: #E32F21;
+  background-color: lighten(#E32F21, 5%);
   font-family: 'Flamenco';
   box-shadow: 0 -1px 10px black;
 }
@@ -139,3 +141,30 @@
   text-align: center;
   font-size: 24px;
 }
+
+
+.footer {
+  background-color: #7DBEB8;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 4rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  box-shadow: 0 -1px 10px 2px black;}
+
+.footer .links a {
+  list-style: none;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 3rem 0 2rem;
+  margin: 0; }
+
+.footer .links a::after {
+  content: "•";
+  padding: 0 0.4rem 0 0.8rem; }
+
+.footer .links a:last-child::after {
+  content: "";
+  padding: 0 0.4rem 0 0.8rem; }

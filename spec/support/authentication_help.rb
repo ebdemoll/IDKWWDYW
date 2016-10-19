@@ -1,4 +1,8 @@
 module AuthenticationHelper
+  def login_with_oauth(service = :google_oauth2)
+    visit "/auth/#{service}"
+  end
+
   def sign_in_as(user)
     mock_auth_for(user)
     visit "/"
@@ -6,12 +10,13 @@ module AuthenticationHelper
   end
 
   def mock_auth_for(user)
-    OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
-      "provider" => user.provider,
-      "uid" => user.uid,
-      "name" => user.name,
-      "oauth_token" => user.oauth_token,
-      "oauth_expires_at" => user.oauth_expires_at
-    )
+    OmniAuth.config.add_mock(
+        :google_oauth2,
+        {
+            :info => {
+            :email => 'test@some_test_domain.com',
+            :name=>'Test User'
+        }
+    })
   end
 end

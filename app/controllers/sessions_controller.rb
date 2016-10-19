@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
        flash[:notice] = "You joined the group you were invited to!"
     end
 
-    redirect_to root_path
+    redirect_to usergroups_path
   end
 
   def destroy

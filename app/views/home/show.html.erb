@@ -1,2 +1,5 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<h1 class="show-header">Welcome!</h1>
+
+<% unless current_user %>
+  <p class="home-page"> Please sign in before continuing to our site!</p>
+<% end %>

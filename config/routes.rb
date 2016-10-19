@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   resources :memberships
 
+  resources :users, only: [:show, :edit]
+
 end

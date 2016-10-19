@@ -4,22 +4,20 @@ require 'rails_helper'
 # frozen_string_literal: true
 describe 'Unauth user can sign in' do
 
+  let!(:user_1) { FactoryGirl.create(:user) }
+
   feature 'Unauthorized can signup' do
 
     scenario 'User sees signup button in header' do
       visit '/'
-      expect(page).to have_link 'Sign up'
+      expect(page).to have_link 'Sign in with Google'
     end
 
     scenario 'User can click signup button' do
       visit '/'
-      click_link 'Sign up'
+      sign_in_as user_1
 
-      expect(page).to have_field('Email')
-      fill_in 'First name', with: 'test'
-      fill_in 'Last name', with: 'name'
-      expect(page).to have_field('Password')
-      expect(page).to have_field('Password confirmation')
+      expect(page).to have_content('Signed in as #{user_1.name}')
     end
 
     scenario 'User enters information and signs up' do

@@ -18,19 +18,20 @@
     <header class="header">
       <h1 class="headline"> "I Don't Know - What Do You Want?""<br></h1>
       <h4 class="headline-sub"> The Solution to Every Couple's Worst Nothing Fight <h4>
-        <div>
+        <div class="login-name">
           <% if current_user %>
-            Signed in as <strong><%= current_user.name %></strong>!
-            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+            <div class="signed-in-as">Signed in as <strong><%= current_user.name %></strong></div>
+            <%= link_to "Sign out", signout_path, id: "sign_out", class: "sign-out-button" %>
           <% else %>
-            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: "sign-out-button" %>
           <% end %>
         </div>
         <div>
       <ul class="header-subnav">
-        <li> <%= link_to 'Add New Group', new_usergroup_path, method: :get, class:"header-button" %></li>
-        <li><%= link_to 'Your Groups', usergroups_path, method: :get, class:"header-button" %></li>
         <% if current_user %>
+          <li> <%= link_to 'Add New Group', new_usergroup_path, method: :get, class:"header-button" %></li>
+          <li><%= link_to 'Your Groups', usergroups_path, method: :get, class:"header-button" %></li>
+          <li><%= link_to 'Your Profile', user_path(current_user), method: :get, class:"header-button" %></li>
         <% end %>
       </ul>
     </header>

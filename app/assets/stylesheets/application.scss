@@ -86,11 +86,13 @@
   font-family: 'Flamenco';
   font-size: 16px;
   display: inline-block;
+  padding: 2px;
 }
 
 .header-button {
-  background-color: #E4DED0;
+  background-color: #E32F21;
   font-family: 'Flamenco';
+  box-shadow: 0 -1px 10px black;
 }
 
 .show-header {
@@ -117,5 +119,23 @@
 }
 
 .groups-list {
-  padding-left: 100px;
+  text-align: center;
+}
+
+.profile-list {
+  text-align: center;
+}
+
+.list-item {
+  background-color: #ABCCBD;
+  width: 200px;
+  margin: auto;
+  box-shadow: 0 -1px 5px black;
+  font-size: 20px;
+}
+
+.home-page {
+  font-family: 'Flamenco';
+  text-align: center;
+  font-size: 24px;
 }

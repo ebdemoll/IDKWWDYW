@@ -14,8 +14,8 @@ describe 'Unauth user can sign in' do
     end
 
     scenario 'User can click signup button' do
-
-      expect(page).to have_content('Signed in as #{user_1.name}')
+      login_with_facebook("DaveTirio")
+      expect(page).to have_content('Signed in as')
     end
 
     scenario 'User enters information and signs up' do

@@ -8,6 +8,11 @@ describe 'Unauth user can sign in' do
 
   feature 'Unauthorized can signup for website' do
 
+    scenario 'Unauthorized user cannot access website beyond home page' do
+      visit '/'
+      expect(page).to have_content("Please sign in before continuing!")
+    end
+
     scenario 'User sees signup button in header' do
       visit '/'
       expect(page).to have_link 'Sign in with Facebook'
@@ -18,6 +23,7 @@ describe 'Unauth user can sign in' do
       visit root_path
       expect(page).to have_content('Signed in as')
     end
+
 
   end
 end

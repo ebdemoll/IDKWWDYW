@@ -22,6 +22,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'dotenv'
 gem 'dotenv-rails'
 gem 'sendgrid-ruby'
+gem 'sendgrid-rails'
 
 group :development, :test do
   gem 'capybara'

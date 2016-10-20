@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'omniauth-facebook'
 require 'coveralls'
 Coveralls.wear!('rails')
 RSpec.configure do |config|
@@ -9,4 +10,7 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:facebook, { uid: SecureRandom.uuid, info: { email: "foobar@example.com" } })
 end

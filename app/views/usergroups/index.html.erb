@@ -1,7 +1,9 @@
 <h1 class="show-header"> Groups You Belong To </h1>
 
 <div class="groups-list">
+<% unless @usergroups.nil? %>
   <% @usergroups.each do |usergroup| %>
-    <li> <%= usergroup.name %></li>
+    <ul class="list-item"> <%= link_to usergroup.name, usergroup %></ul>
   <% end %>
+<% end %>
 </div>

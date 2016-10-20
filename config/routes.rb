@@ -1,13 +1,25 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :auth, only: :show
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
+
+  match '/privacy_policy', :to => 'pages#privacy_policy', via: [:get]
+  match '/terms_of_service', :to => 'pages#terms_of_service', via: [:get]
+
+  root to: "home#show"
 
   resources :usergroups
+
+  resources :invites
 
   match '/memberships/create', :to => "memberships#create", via: [:get, :post]
 
   resources :memberships
 
-  resources :users
+  resources :users, only: [:show, :edit]
 
-  devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 end

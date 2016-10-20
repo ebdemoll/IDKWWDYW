@@ -1,0 +1,9 @@
+<h1 class="show-header"> <%= @usergroup.name %></h1> <br>
+
+<div> <h4> Group Members </h4>
+<% @memberships.each do |member| %>
+  <li><%= member.name  %> </li>
+<% end %>
+</div>
+
+<%= link_to "Invite New User to Group", new_invite_path %>

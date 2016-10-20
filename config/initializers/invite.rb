@@ -3,8 +3,8 @@ if Rails.env.development?
   ActionMailer::Base.smtp_settings = { address: 'localhost', port: 1025 }
 else
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['gmail_username'],
-    :password => ENV['gmail_password'],
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
     :domain => 'https://idkwdyw-nothing-fight.herokuapp.com/',
     :address => 'smtp.sendgrid.net',
     :port => 587,

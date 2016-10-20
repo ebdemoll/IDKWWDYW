@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
 
+  match '/privacy_policy', :to => 'pages#privacy_policy', via: [:get]
+  match '/terms_of_service', :to => 'pages#terms_of_service', via: [:get]
+
   root to: "home#show"
 
   resources :usergroups

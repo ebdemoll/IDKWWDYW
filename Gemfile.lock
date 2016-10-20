@@ -261,9 +261,13 @@ GEM
     omniauth (1.3.1)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
-    omniauth-facebook (4.0.0)
-      omniauth-oauth2 (~> 1.2)
-    omniauth-oauth2 (1.4.0)
+    omniauth-google-oauth2 (0.2.10)
+      addressable (~> 2.3)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (~> 1.3.1)
+    omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     parser (2.3.1.4)
@@ -410,7 +414,7 @@ DEPENDENCIES
   json
   launchy
   listen
-  omniauth-facebook
+  omniauth-google-oauth2 (~> 0.2.1)
   pg (~> 0.15)
   pry
   pry-rails

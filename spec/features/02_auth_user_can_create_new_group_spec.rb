@@ -10,14 +10,14 @@ describe 'Unauth user can sign in' do
   feature 'Authorized user can create a new group' do
 
     scenario 'User sees Add New Group button on Index Page' do
-      login_with_facebook("DaveTirio")
+      login_with_google("DaveTirio")
       visit root_path
 
       expect(page).to have_link 'Add New Group'
     end
 
     scenario 'User can add new group successfully' do
-      login_with_facebook("DaveTirio")
+      login_with_google("DaveTirio")
       visit root_path
       click_link 'Add New Group'
       fill_in 'Name', with: 'TestGroup'
@@ -27,7 +27,7 @@ describe 'Unauth user can sign in' do
     end
 
     scenario 'User can add new group successfully' do
-      login_with_facebook("DaveTirio")
+      login_with_google("DaveTirio")
       visit root_path
       click_link 'Add New Group'
       fill_in 'Name', with: 'TestGroup'

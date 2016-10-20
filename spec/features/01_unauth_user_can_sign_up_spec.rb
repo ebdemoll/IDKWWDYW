@@ -15,11 +15,11 @@ describe 'Unauth user can sign in' do
 
     scenario 'User sees signup button in header' do
       visit '/'
-      expect(page).to have_link 'Sign in with Facebook'
+      expect(page).to have_link 'Sign in with Google'
     end
 
     scenario 'User can successfully sign up' do
-      login_with_facebook("DaveTirio")
+      login_with_google("DaveTirio")
       visit root_path
       expect(page).to have_content('Signed in as')
     end

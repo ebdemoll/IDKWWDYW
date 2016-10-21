@@ -12,6 +12,16 @@ class UsergroupsController < ApplicationController
     @preference = Preference.new
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
+    @users = @usergroup.users
+    @users.each do |user|
+      userpreference = Preference.find_by(user_id: user.id)
+      if userpreference
+        @ready = false
+        break
+      else
+        @ready = true
+      end
+    end
     @membership = Membership.find_by(usergroup_id: @usergroup.id)
     if @membership.user_id == current_user.id
       @memberships = []
@@ -20,6 +30,9 @@ class UsergroupsController < ApplicationController
       redirect_to usergroups_path
       flash[:notice] = "You Do Not Belong to That Group"
     end
+
+
+
   end
 
   def new

@@ -5,12 +5,15 @@ class PreferencesController < ApplicationController
   end
 
   def create
+    binding.pry
     @preference = Preference.new(preferences_params)
+    @usergroupshow = Usergroup.find(session[:ugid])
     if @preference.save
-      # redirect_to where???? back to usergroup show page?
+      redirect_to usergroup_path(@usergroupshow)
       flash[:notice] = "Preferences updated"
     else
       flash[:notice] = @preference.errors.full_messages.join(", ")
+      redirect_to usergroup_path(@usergroupshow)
     end
   end
 
@@ -18,7 +21,7 @@ class PreferencesController < ApplicationController
 
 
    def preferences_params
-     params.require(:preference).permit(:user, :usergroup, :find, :location, :category)
+     params.require(:preference).permit(:user_id, :usergroup_id, :find, :location, :category)
    end
 
 end

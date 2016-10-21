@@ -2,10 +2,10 @@
   <h4> What Would You Be Willing to Eat For Dinner? </h4>
 <%= form_for(@preference) do |q| %>
   <div class="field" hidden = "true">
-    <%= q.text_field :user, value: current_user.id %>
+    <%= q.text_field :user_id, value: current_user.id %>
   </div>
   <div class="field" hidden = "true">
-    <%= q.text_field :usergroup, value: @usergroup.id %>
+    <%= q.text_field :usergroup_id, value: @usergroup.id %>
   </div>
   <div class="field">
     <%= q.label :find  %><br>

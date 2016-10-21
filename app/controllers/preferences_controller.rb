@@ -5,7 +5,6 @@ class PreferencesController < ApplicationController
   end
 
   def create
-    binding.pry
     @preference = Preference.new(preferences_params)
     @usergroupshow = Usergroup.find(session[:ugid])
     if @preference.save

@@ -21,7 +21,7 @@ gem 'pry'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'dotenv'
 gem 'dotenv-rails'
-gem 'sendgrid-ruby'
+gem 'yelp'
 
 
 group :development, :test do

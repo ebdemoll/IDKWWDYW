@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
 
   match '/privacy_policy', :to => 'pages#privacy_policy', via: [:get]
-  match '/terms_of_service', :to => 'pages#terms_of_service', via: [:get]
 
   root to: "home#show"
 
   resources :usergroups
 
+  resources :preferences
+  
   resources :invites
 
   match '/memberships/create', :to => "memberships#create", via: [:get, :post]

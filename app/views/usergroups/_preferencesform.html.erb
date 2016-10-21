@@ -1,0 +1,26 @@
+<div class="no-top-padding">
+  <h4> What Would You Be Willing to Eat For Dinner? </h4>
+<%= form_for(@preference) do |q| %>
+  <div class="field" hidden = "true">
+    <%= q.text_field :user, value: current_user.id %>
+  </div>
+  <div class="field" hidden = "true">
+    <%= q.text_field :usergroup, value: @usergroup.id %>
+  </div>
+  <div class="field">
+    <%= q.label :find  %><br>
+    <%= q.text_field :find, value: "ex. tacos, dinner" %>
+  </div>
+  <div class="field">
+    <%= q.label :location %><br>
+    <%= q.text_field :location, value: "ex. Boston, MA" %>
+  </div>
+  <div class="field">
+    <%= q.label :category %><br>
+    <%= q.text_field :category, value: "ex. Pizza" %>
+  </div>
+  <div class="actions">
+    <%= q.submit "Submit Preferences", class:"submit-button", style:"width: 300px;"%>
+  </div>
+<% end %>
+</div>

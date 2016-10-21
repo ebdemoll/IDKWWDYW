@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :preferences 
   has_many :memberships
   has_many :user_groups, through: :memberships
   has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'

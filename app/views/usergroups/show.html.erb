@@ -2,8 +2,16 @@
 
 <div> <h4> Group Members </h4>
 <% @memberships.each do |member| %>
-  <li><%= member.name  %> </li>
+  <li><%= member.name  %>
+    <% if current_user.preferences.empty? %>
+        (This user has not submitted their preferences.)
+      <% else %>
+        (This user has submitted their prefences.)
+    <% end %>
+  </li>
 <% end %>
 </div>
 
 <%= link_to "Invite New User to Group", new_invite_path %>
+
+<%= render 'preferencesform' %>

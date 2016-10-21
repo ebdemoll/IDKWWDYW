@@ -9,6 +9,7 @@ class UsergroupsController < ApplicationController
   end
 
   def show
+    @preference = Preference.new
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     @membership = Membership.find_by(usergroup_id: @usergroup.id)

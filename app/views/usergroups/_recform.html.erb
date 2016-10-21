@@ -1,0 +1,26 @@
+<!-- need to update this form so that it passes each user's preferences to fill in yelp api call -->
+<div class="no-top-padding">
+<%= form_for(@preference) do |q| %>
+  <div class="field" hidden = "true">
+    <%= q.text_field :user_id, value: current_user.id %>
+  </div>
+  <div class="field" hidden = "true">
+    <%= q.text_field :usergroup_id, value: @usergroup.id %>
+  </div>
+  <div class="field" hidden = "true">
+    <%= q.label :find  %><br>
+    <%= q.text_field :find, value: "ex. tacos, dinner" %>
+  </div>
+  <div class="field" hidden = "true">
+    <%= q.label :location %><br>
+    <%= q.text_field :location, value: "ex. Boston, MA" %>
+  </div>
+  <div class="field" hidden = "true">
+    <%= q.label :category %><br>
+    <%= q.text_field :category, value: "ex. Pizza" %>
+  </div>
+  <div class="actions">
+    <%= q.submit "Restaurant Recommendations", action: '/preferences/create', class:"submit-button", style:"width: 300px;"%>
+  </div>
+<% end %>
+</div>

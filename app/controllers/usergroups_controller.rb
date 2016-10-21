@@ -13,10 +13,19 @@ class UsergroupsController < ApplicationController
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     userpreference = Preference.find_by(user_id: current_user.id)
-    if userpreference
+    if userpreference.nil?
       @ready = false
     else
       @ready = true
+    end
+    users = @usergroup.users
+    users.each do |user|
+      if user.preferences.nil?
+        @submit = false
+        break
+      else
+        @submit = true
+      end
     end
     @membership = Membership.find_by(usergroup_id: @usergroup.id)
     if @membership.user_id == current_user.id
@@ -26,9 +35,6 @@ class UsergroupsController < ApplicationController
       redirect_to usergroups_path
       flash[:notice] = "You Do Not Belong to That Group"
     end
-
-
-
   end
 
   def new
@@ -51,6 +57,11 @@ class UsergroupsController < ApplicationController
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     @invite = Invite.new
+  end
+
+  def search
+    parameters = { term: params[:term], limit: 5 }
+    result1 = Yelp.client.search(‘San Francisco’, parameters)
   end
 
  private

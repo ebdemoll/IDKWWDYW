@@ -49,6 +49,18 @@ feature 'User submits their personal preferences for dinner' do
     expect(page).to have_content('(This user has submitted their prefences.)')
   end
   scenario 'User who has submitted preferences does not see a form to submit preferences' do
+    login_with_google(user_1.name)
+    visit root_path
+    click_link "Add New Group"
+    fill_in 'Name', with: "testgroup"
+    click_button 'Add New Group'
+    click_link "Your Groups"
+    click_link "testgroup"
+    fill_in 'Find', with: "Dinner"
+    fill_in 'Location', with: "Boston, MA"
+    fill_in 'Category', with: 'Pizza'
+    click_button 'Submit Preferences'
 
+    expect(page).to_not have_button("Submit Preferences")
   end
 end

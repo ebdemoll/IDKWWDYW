@@ -82,13 +82,11 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
   config.action_mailer.default_url_options = { host: 'idkwdyw-nothing-fight.herokuapp.com' }
-
-  # Do not dump schema after migrations.
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default charset: "utf-8"
-  config.action_mailer.sendmail_settings = {
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.sendmail_settings = {
     address: 'smtp.gmail.com',
     port: 587,
     domain: "mail.google.com",

@@ -20,7 +20,7 @@
     <%= q.text_field :category, value: "ex. Pizza" %>
   </div>
   <div class="actions">
-    <%= q.submit "Submit Preferences", class:"submit-button", style:"width: 300px;"%>
+    <%= q.submit "Submit Preferences", action: '/preferences/create', class:"submit-button", style:"width: 300px;"%>
   </div>
 <% end %>
 </div>

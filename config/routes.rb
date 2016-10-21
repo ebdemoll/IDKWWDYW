@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
   resources :usergroups
 
+  match '/preferences/create', :to => "preferences#create", via: [:get, :post]
+
   resources :preferences
-  
+
   resources :invites
 
   match '/memberships/create', :to => "memberships#create", via: [:get, :post]

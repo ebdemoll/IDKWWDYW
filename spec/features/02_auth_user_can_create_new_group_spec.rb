@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'rails_helper'
 require 'factory_girl_rails'
 
-describe 'Unauth user can sign in' do
+describe 'Unauth user can create and join a new group' do
 
   let!(:user_1) { FactoryGirl.create(:user) }
 

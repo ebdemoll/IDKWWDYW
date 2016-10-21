@@ -57,6 +57,4 @@ feature 'User sends email invite to another person' do
     expect(ActionMailer::Base.deliveries.first.to).to eq(["testemail@gmail.com"])
     expect(ActionMailer::Base.deliveries.first.from).to eq(['idkwdywmailer@gmail.com'])
   end
-
-
 end

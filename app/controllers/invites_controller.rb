@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
       @invite = Invite.new(invite_params)
       @invite.sender_id = current_user.id
       if @invite.save
-         InviteMailer.new_user_invite(@invite, root_path(:invite_token => @invite.token)).deliver
+         InviteMailer.new_user_invite(@invite, root_path(:invite_token => @invite.token)).deliver_now
          flash[:notice] = "Invite Sent"
          redirect_to usergroups_path
       else

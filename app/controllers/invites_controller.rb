@@ -22,7 +22,7 @@ class InvitesController < ApplicationController
          flash[:notice] = "Invite Sent"
          redirect_to usergroups_path
         else
-          InviteMailer.new_user_invite(@invite, root_path(:invite_token => @invite.token)).deliver_now
+          InviteMailer.returning_user_invite(@invite, root_path(:invite_token => @invite.token)).deliver_now
           flash[:notice] = "Invite Sent"
           redirect_to usergroups_path
         end

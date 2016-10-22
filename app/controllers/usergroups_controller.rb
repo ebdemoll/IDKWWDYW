@@ -2,6 +2,7 @@
 class UsergroupsController < ApplicationController
   def index
     @membership = Membership.find_by(user_id: current_user.id)
+
     unless @membership.nil?
         @usergroups = []
         @usergroups << Usergroup.find_by(id: @membership.usergroup_id)

@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
+    session[:user_id] = user.id
     @token = params[:invite_token]
     session[:token] = @token
     if user && user.authenticate(params[:session][:password])

@@ -13,11 +13,19 @@ class InvitesController < ApplicationController
 
   def create
       @invite = Invite.new(invite_params)
+      recipient = User.find_by(email: @invite.email)
       @invite.sender_id = current_user.id
       if @invite.save
-         InviteMailer.new_user_invite(@invite, root_path(:invite_token => @invite.token)).deliver_now
+        if recipient.nil?
+
+         InviteMailer.new_user_invite(@invite, signup_path(:invite_token => @invite.token)).deliver_now
          flash[:notice] = "Invite Sent"
          redirect_to usergroups_path
+        else
+          InviteMailer.new_user_invite(@invite, login_path(:invite_token => @invite.token)).deliver_now
+          flash[:notice] = "Invite Sent"
+          redirect_to usergroups_path
+        end
       else
         flash[:notice] = "Invite Did NOT Send"
         redirect_to usergroups_path

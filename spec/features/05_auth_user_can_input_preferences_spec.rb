@@ -18,8 +18,7 @@ feature 'User submits their personal preferences for dinner' do
     end
 
   scenario 'User who hasn\'t submitted preferences yet sees a form to submit preferences' do
-    login_with_google(user_1.name)
-    visit root_path
+    login(user_1)
     click_link "Add New Group"
     fill_in 'Name', with: "testgroup"
     click_button 'Add New Group'
@@ -33,8 +32,7 @@ feature 'User submits their personal preferences for dinner' do
   end
 
   scenario 'User can submit preferences through a form' do
-    login_with_google(user_1.name)
-    visit root_path
+    login(user_1)
     click_link "Add New Group"
     fill_in 'Name', with: "testgroup"
     click_button 'Add New Group'
@@ -49,8 +47,7 @@ feature 'User submits their personal preferences for dinner' do
     expect(page).to have_content('(This user has submitted their prefences.)')
   end
   scenario 'User who has submitted preferences does not see a form to submit preferences' do
-    login_with_google(user_1.name)
-    visit root_path
+    login(user_1)
     click_link "Add New Group"
     fill_in 'Name', with: "testgroup"
     click_button 'Add New Group'

@@ -1,5 +1,9 @@
 module UserSignInHelper
-  def login_with_google(username = "foobington")
-    visit auth_path(:google_oauth2)
+  def login(user)
+    visit '/'
+    click_link 'Log In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log In'
   end
 end

@@ -27,8 +27,7 @@ feature 'User sends email invite to another person' do
 
 
   scenario 'User can fill in a form to invite someone' do
-    login_with_google(user_1.name)
-    visit root_path
+    login(user_1)
     click_link "Add New Group"
     fill_in 'Name', with: "testgroup"
     click_button 'Add New Group'
@@ -41,8 +40,7 @@ feature 'User sends email invite to another person' do
   end
 
   scenario 'User can fill in a form to invite someone' do
-    login_with_google(user_1.name)
-    visit root_path
+    login(user_1)
     click_link "Add New Group"
     fill_in 'Name', with: "testgroup"
     click_button 'Add New Group'

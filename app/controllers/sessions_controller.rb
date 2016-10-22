@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     @token = params[:invite_token]
     session[:token] = @token
-    binding.pry
     if user && user.authenticate(params[:session][:password])
       if session[:token] != nil
          org =  Invite.find_by_token(session[:token]).usergroup #find the user group attached to the invite

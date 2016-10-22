@@ -12,7 +12,6 @@ class InvitesController < ApplicationController
   end
 
   def create
-      binding.pry
       @invite = Invite.new(invite_params)
       recipient = User.find_by(email: @invite.email)
       @invite.sender_id = current_user.id

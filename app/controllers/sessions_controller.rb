@@ -1,20 +1,22 @@
 class SessionsController < ApplicationController
   def new
-    session[:token]
+    @token = params[:invite_token]
+    session[:token] = @token
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    session[:user_id] = user.id
-    @token = session[:token]
+    @token = params[:invite_token]
+    session[:token] = @token
+    binding.pry
     if user && user.authenticate(params[:session][:password])
-      if @token != nil
-         org =  Invite.find_by_token(@token).usergroup #find the user group attached to the invite
+      if session[:token] != nil
+         org =  Invite.find_by_token(session[:token]).usergroup #find the user group attached to the invite
          @membership = Membership.new(user_id: current_user.id, usergroup_id: org.id)
          @membership.save
          flash[:notice] = "You joined the group you were invited to!"
-             redirect_to usergroups_path
       end
+      redirect_to usergroups_path
     else
       flash[:danger] = 'Invalid email/password combination'
       render :new

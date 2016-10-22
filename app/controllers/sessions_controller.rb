@@ -4,21 +4,27 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
+    user = User.find_by(email: params[:session][:email].downcase)
     session[:user_id] = user.id
     @token = session[:token]
-    if @token != nil
-       org =  Invite.find_by_token(@token).usergroup #find the user group attached to the invite
-       @membership = Membership.new(user_id: current_user.id, usergroup_id: org.id)
-       @membership.save
-       flash[:notice] = "You joined the group you were invited to!"
+    if user && user.authenticate(params[:session][:password])
+      if @token != nil
+         org =  Invite.find_by_token(@token).usergroup #find the user group attached to the invite
+         @membership = Membership.new(user_id: current_user.id, usergroup_id: org.id)
+         @membership.save
+         flash[:notice] = "You joined the group you were invited to!"
+             redirect_to usergroups_path
+      end
+    else
+      flash[:danger] = 'Invalid email/password combination'
+      render :new
     end
 
-    redirect_to usergroups_path
   end
 
   def destroy
-    session[:user_id] = nil
+    session.delete(:user_id)
+    @current_user = nil
     redirect_to root_path
   end
 end

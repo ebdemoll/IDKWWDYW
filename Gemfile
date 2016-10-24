@@ -21,6 +21,7 @@ gem 'pry'
 gem 'dotenv'
 gem 'dotenv-rails'
 gem 'yelp'
+gem 'bcrypt', "~> 3.1.11"    
 
 
 group :development, :test do

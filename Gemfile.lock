@@ -46,6 +46,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    bcrypt (3.1.11)
     builder (3.2.2)
     capybara (2.9.2)
       addressable
@@ -385,6 +386,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionmailer (~> 5.0, >= 5.0.0.1)
+  bcrypt (~> 3.1.11)
   capybara
   carrierwave (>= 1.0.0.beta, < 2.0)
   coveralls

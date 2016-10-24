@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
-
-  resources :auth, only: :show
-  resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  get '/logout',  to: 'sessions#destroy'
+  resources :users
 
   match '/privacy_policy', :to => 'pages#privacy_policy', via: [:get]
 
@@ -24,7 +23,5 @@ Rails.application.routes.draw do
   match '/memberships/create', :to => "memberships#create", via: [:get, :post]
 
   resources :memberships
-
-  resources :users, only: [:show, :edit]
 
 end

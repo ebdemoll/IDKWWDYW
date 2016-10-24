@@ -19,17 +19,6 @@
 <% end %>
 
 <% if @submit == true  %>
-<div>
-  <h4> Your Recommendation </h4>
-  <ul>
-    <% @user_1_data.businesses.each do |result| %>
-      <li>Restaurant: <%= result.name %></li>
-      <li>Location: <%= result.location.display_address[0] %></li>
-      <li>Phone: <%= result.display_phone %></li>
-      <li>Yelp Rating: <%= result.rating %> / 5</li>
-      <li><%= link_to "Check out more on Yelp!", result.mobile_url, target: "blank", class: "yelp" %></li>
-    <% end %>
-  </ul>
-</div>
+  <%= link_to "Get Your Restaurant Recommendation", '/recommendations/create' %>
   <data id="app"/>
 <% end %>

@@ -16,6 +16,14 @@ class PreferencesController < ApplicationController
     end
   end
 
+  def destroy
+    deletepreferences = Preference.where(usergroup_id: @usergroup.id)
+    deletepreferences.each do |preference|
+      preference.destroy
+    end
+    redirect_to usergroup_path(@usergroup)
+  end
+
   private
 
 

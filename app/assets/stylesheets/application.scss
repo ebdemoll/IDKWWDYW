@@ -47,6 +47,7 @@
     margin: 0 auto;
     bottom: 0;
     width: 100%;
+    position: relative;
   }
 
 .header-subnav li {
@@ -73,6 +74,8 @@
 .login-name {
   display: inline-block;
   color: black;
+  padding-bottom: 10px;
+  font-family: 'Raleway';
 }
 
 .signed-in-as {
@@ -80,6 +83,7 @@
   font-family: 'Raleway';
   font-size: 18px;
   display: inline-block;
+  position: absolute;
 }
 
 .sign-out-button {
@@ -164,4 +168,14 @@
   margin-right: auto;
   left: 0;
   right: 0;
+}
+
+.log-in-page {
+  width: 40%;
+  display: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  padding-top: 15px;
 }

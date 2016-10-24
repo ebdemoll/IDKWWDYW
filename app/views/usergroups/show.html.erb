@@ -20,5 +20,8 @@
 
 <% if @submit == true  %>
   <%= link_to "Get Your Restaurant Recommendation", '/recommendations/create' %>
-  <data id="app"/>
+<% end %>
+
+<% unless @recommmendation.nil? %>
+  <div id="app" />
 <% end %>

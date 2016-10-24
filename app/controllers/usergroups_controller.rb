@@ -27,6 +27,7 @@ class UsergroupsController < ApplicationController
         @submit = true
       end
     end
+    @recommendation = Recommendation.find_by(usergroup_id: @usergroup.id)
     @membership = Membership.find_by(usergroup_id: @usergroup.id)
     if @membership.user_id == current_user.id
       @memberships = []

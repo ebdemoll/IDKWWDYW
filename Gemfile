@@ -31,12 +31,14 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'vcr'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'launchy', require: false
   gem 'coveralls', require: false
+  gem "webmock"
 end
 
 group :production do

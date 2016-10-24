@@ -20,7 +20,7 @@ class UsergroupsController < ApplicationController
     end
     users = @usergroup.users
     users.each do |user|
-      if user.preferences.nil?
+      if user.preferences.empty?
         @submit = false
         break
       else
@@ -34,6 +34,14 @@ class UsergroupsController < ApplicationController
     else
       redirect_to usergroups_path
       flash[:notice] = "You Do Not Belong to That Group"
+    end
+    if @submit == true
+      params = {
+        term: current_user.preferences[0].find,
+        category_filter: ('restaurants'),
+        limit: 1
+      }
+      @user_1_data = Yelp.client.search(current_user.preferences[0].location, params)
     end
   end
 
@@ -53,21 +61,17 @@ class UsergroupsController < ApplicationController
     end
   end
 
+
   def edit
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     @invite = Invite.new
   end
 
-  def search
-    parameters = { term: params[:term], limit: 5 }
-    result1 = Yelp.client.search(‘San Francisco’, parameters)
-  end
+   private
 
- private
-
- def usergroup_params
-   params.require(:usergroup).permit(:name, :user)
- end
+   def usergroup_params
+     params.require(:usergroup).permit(:name, :user)
+   end
 
 end

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   root to: "home#show"
 
+  match '/usergroups/search', :to => "usergroups#search", via: [:get, :post]
+
   resources :usergroups
 
   match '/preferences/create', :to => "preferences#create", via: [:get, :post]

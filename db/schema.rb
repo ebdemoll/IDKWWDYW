@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022161432) do
+ActiveRecord::Schema.define(version: 20161024191416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,20 @@ ActiveRecord::Schema.define(version: 20161022161432) do
     t.index ["user_id"], name: "index_preferences_on_user_id", using: :btree
   end
 
+  create_table "recommendations", force: :cascade do |t|
+    t.integer "usergroup_id"
+    t.string  "name"
+    t.string  "phone"
+    t.string  "address"
+    t.string  "yelp_rating"
+    t.index ["usergroup_id"], name: "index_recommendations_on_usergroup_id", using: :btree
+  end
+
   create_table "usergroups", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "chooser"
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,7 +2,6 @@
 class UsergroupsController < ApplicationController
   def index
     @membership = Membership.find_by(user_id: current_user.id)
-
     unless @membership.nil?
         @usergroups = []
         @usergroups << Usergroup.find_by(id: @membership.usergroup_id)
@@ -14,10 +13,20 @@ class UsergroupsController < ApplicationController
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     userpreference = Preference.find_by(user_id: current_user.id)
-    if userpreference
+    @recommendation = Recommendation.find_by(usergroup_id: @usergroup.id)
+    if userpreference.nil?
       @ready = false
     else
       @ready = true
+    end
+    users = @usergroup.users
+    users.each do |user|
+      if user.preferences.empty?
+        @submit = false
+        break
+      else !user.preferences.empty? && @recommendation.nil?
+        @submit = true
+      end
     end
     @membership = Membership.find_by(usergroup_id: @usergroup.id)
     if @membership.user_id == current_user.id
@@ -27,9 +36,6 @@ class UsergroupsController < ApplicationController
       redirect_to usergroups_path
       flash[:notice] = "You Do Not Belong to That Group"
     end
-
-
-
   end
 
   def new
@@ -48,16 +54,17 @@ class UsergroupsController < ApplicationController
     end
   end
 
+
   def edit
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     @invite = Invite.new
   end
 
- private
+   private
 
- def usergroup_params
-   params.require(:usergroup).permit(:name, :user)
- end
+   def usergroup_params
+     params.require(:usergroup).permit(:name, :user)
+   end
 
 end

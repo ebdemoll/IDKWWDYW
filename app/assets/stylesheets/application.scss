@@ -20,25 +20,24 @@
  }
  .header {
     text-align: center;
-    background: #7DBEB8;
+    background: white;
     background-size: cover;
     position: relative;
     overflow: visible;
-    padding-top: 2.5rem;
-    padding-bottom: 4.9rem;
-    box-shadow: 0 -1px 10px 2px black;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: bold;
   }
 
 .header .headline {
-    color:  lighten(#E4DED0, 10%);
-    font-family: 'Flamenco';
-    text-shadow: 1px 1px 1px black;
+    color: black;
+    font-family: 'Raleway';
+
   }
 
 .header .headline-sub {
-  color:  lighten(#E4DED0, 10%);
-  font-family: 'Flamenco';
-  text-shadow: 1px 1px 1px black;
+  color:  black;
+  font-family: 'Raleway';
 }
 
 .header-subnav {
@@ -48,6 +47,7 @@
     margin: 0 auto;
     bottom: 0;
     width: 100%;
+    position: relative;
   }
 
 .header-subnav li {
@@ -57,7 +57,7 @@
 .header-subnav li a {
    padding: 0.9rem 1rem;
    font-size: 0.75rem;
-   color: black;
+   color: white;
    text-transform: uppercase;
    display: block;
    font-weight: bold;
@@ -73,34 +73,45 @@
 
 .login-name {
   display: inline-block;
-
+  color: black;
+  padding-bottom: 10px;
+  font-family: 'Raleway';
 }
 
 .signed-in-as {
-  color: lighten(#E4DED0, 5%);
-  font-family: 'Flamenco';
+  color: black;
+  font-family: 'Raleway';
   font-size: 18px;
   display: inline-block;
+  position: absolute;
 }
 
 .sign-out-button {
-  background-color: #E4DED0;
-  font-family: 'Flamenco';
+  background-color: lighten(black, 65%);
+  font-family: 'Raleway';
   font-size: 16px;
   display: inline-block;
-  padding: 2px;
+  padding: 8px;
+  color: white;
+  border-radius: 5px;
 }
 
 .header-button {
-  background-color: lighten(#E32F21, 5%);
-  font-family: 'Flamenco';
-  box-shadow: 0 -1px 10px black;
+  background-color: black;
+  font-family: 'Raleway';
+  color: white;
+}
+
+.sign-up {
+  border: solid;
+  padding: 6px;
 }
 
 .show-header {
   text-align: center;
   padding: 20px;
-  font-family: 'Flamenco';
+  font-family: 'Raleway';
+  font-size: 70px;
 }
 
 .no-top-padding {
@@ -137,34 +148,39 @@
 }
 
 .home-page {
-  font-family: 'Flamenco';
+  font-family: 'Raleway';
   text-align: center;
   font-size: 24px;
 }
 
+.welcome-image {
+  position: relative;
+  z-index: -1;
+}
 
-.footer {
-  background-color: #7DBEB8;
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 4rem;
+.welcome {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 10%;
-  box-shadow: 0 -1px 10px 2px black;}
-
-.footer .links a {
-  list-style: none;
+  z-index: 1;
+  color: white;
   font-weight: bold;
-  color: #ffffff;
-  padding: 3rem 0 2rem;
-  margin: 0; }
+  padding-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
 
-.footer .links a::after {
-  content: "•";
-  padding: 0 0.4rem 0 0.8rem; }
+.log-in-page {
+  width: 40%;
+  display: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  padding-top: 15px;
+}
 
-.footer .links a:last-child::after {
-  content: "";
-  padding: 0 0.4rem 0 0.8rem; }
+.generic-buttons {
+  background-color: #E4DED0;
+  border: solid;
+}

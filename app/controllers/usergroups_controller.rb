@@ -36,12 +36,25 @@ class UsergroupsController < ApplicationController
       flash[:notice] = "You Do Not Belong to That Group"
     end
     if @submit == true
+      if @usergroup.chooser.nil?
+        @chooser = @usergroup.users.first
+      else
+        @usergroup.users.each do |user|
+          if user.id != @usergroup.chooser
+            @chooser = user
+          end
+        end
+      end
       params = {
         term: current_user.preferences[0].find,
         category_filter: ('restaurants'),
         limit: 1
       }
       @user_1_data = Yelp.client.search(current_user.preferences[0].location, params)
+      deletepreferences = Preference.where(usergroup_id: @usergroup.id).destroy
+      unless @chooser.nil?
+        @usergroup.update_attribute(:chooser, @chooser.id)
+      end
     end
   end
 

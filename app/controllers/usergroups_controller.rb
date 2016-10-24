@@ -13,6 +13,7 @@ class UsergroupsController < ApplicationController
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
     userpreference = Preference.find_by(user_id: current_user.id)
+    @recommendation = Recommendation.find_by(usergroup_id: @usergroup.id)
     if userpreference.nil?
       @ready = false
     else
@@ -23,11 +24,10 @@ class UsergroupsController < ApplicationController
       if user.preferences.empty?
         @submit = false
         break
-      else
+      else !user.preferences.empty? && @recommendation.nil?
         @submit = true
       end
     end
-    @recommendation = Recommendation.find_by(usergroup_id: @usergroup.id)
     @membership = Membership.find_by(usergroup_id: @usergroup.id)
     if @membership.user_id == current_user.id
       @memberships = []

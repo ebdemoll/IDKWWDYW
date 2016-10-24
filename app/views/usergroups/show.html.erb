@@ -22,6 +22,13 @@
   <%= link_to "Get Your Restaurant Recommendation", '/recommendations/create' %>
 <% end %>
 
-<% unless @recommmendation.nil? %>
-  <div id="app" />
+<% if @recommendation %>
+<div class="recommendation">
+  <h3> Your Recommendation </h3>
+  <%= @recommendation.name %>
+  <%= @recommendation.address %>
+  <%= @recommendation.phone %>
+  <%= @recommendation.yelp_rating %>
+  <div id="app"> </div>
+</div>
 <% end %>

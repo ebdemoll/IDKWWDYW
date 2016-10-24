@@ -7,6 +7,10 @@ class RecommendationsController < ApplicationController
     end
   end
 
+  def new
+    @recommendation = Recommendation.new
+  end
+
   def create
     @usergroup = Usergroup.find(session[:ugid])
     @chooser = User.find(@usergroup.chooser)
@@ -27,8 +31,12 @@ class RecommendationsController < ApplicationController
     }
     @yelp_data = Yelp.client.search(@chooser.preferences[0].location, params)
     @yelp_data.businesses.each do |result|
-      @recommendation = Recommendation.new(usergroup_id: @usergroup.id, name: result.name, phone: result.display_phone, address: result.location.display_address, yelp_rating: result.rating)
+      @name = result.name
+      @phone = result.display_phone
+      @address = result.location.display_address[0]
+      @yelp_rating = result.rating
     end
+    @recommendation = Recommendation.create(usergroup_id: @usergroup.id, name: @name, phone: @phone, address: @address, yelp_rating: @yelp_rating)
     redirect_to usergroup_path(@usergroup)
   end
 

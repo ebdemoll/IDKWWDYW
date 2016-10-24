@@ -52,7 +52,10 @@ class UsergroupsController < ApplicationController
         limit: 1
       }
       @user_1_data = Yelp.client.search(current_user.preferences[0].location, params)
-      deletepreferences = Preference.where(usergroup_id: @usergroup.id).destroy
+      deletepreferences = Preference.where(usergroup_id: @usergroup.id)
+      deletepreferences.each do |preference|
+        preference.destroy
+      end
       unless @chooser.nil?
         @usergroup.update_attribute(:chooser, @chooser.id)
       end

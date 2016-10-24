@@ -25,9 +25,8 @@ feature 'User submits their personal preferences for dinner' do
     click_link "Your Groups"
     click_link "testgroup"
 
-    expect(page).to have_content("Find")
+    expect(page).to have_content("What do you feel like?")
     expect(page).to have_content("Location")
-    expect(page).to have_content("Category")
     expect(page).to have_button("Submit Preferences")
   end
 
@@ -38,9 +37,8 @@ feature 'User submits their personal preferences for dinner' do
     click_button 'Add New Group'
     click_link "Your Groups"
     click_link "testgroup"
-    fill_in 'Find', with: "Dinner"
+    fill_in 'What do you feel like?', with: "Dinner"
     fill_in 'Location', with: "Boston, MA"
-    fill_in 'Category', with: 'Pizza'
     click_button 'Submit Preferences'
 
     expect(page).to have_content('Preferences updated')
@@ -53,9 +51,8 @@ feature 'User submits their personal preferences for dinner' do
     click_button 'Add New Group'
     click_link "Your Groups"
     click_link "testgroup"
-    fill_in 'Find', with: "Dinner"
+    fill_in 'What do you feel like?', with: "Dinner"
     fill_in 'Location', with: "Boston, MA"
-    fill_in 'Category', with: 'Pizza'
     click_button 'Submit Preferences'
 
     expect(page).to_not have_button("Submit Preferences")

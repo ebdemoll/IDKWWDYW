@@ -21,12 +21,11 @@ gem 'pry'
 gem 'dotenv'
 gem 'dotenv-rails'
 gem 'yelp'
-gem 'bcrypt', "~> 3.1.11"    
+gem 'bcrypt', "~> 3.1.11"
 
 
 group :development, :test do
   gem 'capybara'
-  # gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'

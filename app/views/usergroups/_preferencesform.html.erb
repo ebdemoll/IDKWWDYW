@@ -1,5 +1,5 @@
 <div class="no-top-padding">
-  <h4> What Would You Be Willing to Eat For Dinner? </h4>
+  <h4> Preferences </h4>
 <%= form_for(@preference) do |q| %>
   <div class="field" hidden = "true">
     <%= q.text_field :user_id, value: current_user.id %>
@@ -8,7 +8,7 @@
     <%= q.text_field :usergroup_id, value: @usergroup.id %>
   </div>
   <div class="field">
-    <%= q.label :find, "What are some things you feel like eating?"  %><br>
+    <%= q.label :find, "What do you feel like?"  %><br>
     <%= q.text_field :find, value: "ex. tacos, dinner" %>
   </div>
   <div class="field">

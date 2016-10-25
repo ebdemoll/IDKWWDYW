@@ -208,8 +208,13 @@
 
 .group-members {
   text-align: center;
+  padding: 3px;
 }
 
 .recommendation {
   text-align: center;
+}
+
+.no-top-padding {
+  padding: 0px;
 }

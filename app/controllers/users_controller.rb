@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   def show
     @user = current_user
   end
@@ -8,27 +7,19 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @token = params[:invite_token]
-    session[:token] = params[:invite_token]
-    if @token != nil
-       org =  Invite.find_by_token(@token).usergroup #find the user group attached to the invite
-       @membership = Membership.new(user_id: current_user.id, usergroup_id: org.id)
-       @membership.save
-       flash[:notice] = "You joined the group you were invited to!"
-       redirect_to usergroups_path
-    end
+    session[:token] = @token
   end
 
   def create
     @user = User.new(user_params)
+    @token = params[:invite_token]
+    session[:token] = @token
     if @user.save
-      @token = params[:invite_token]
-      session[:token] = params[:invite_token]
-      if @token != nil
-         org =  Invite.find_by_token(@token).usergroup #find the user group attached to the invite
+      if session[:token] != nil
+         org =  Invite.find_by_token(session[:token]).usergroup #find the user group attached to the invite
          @membership = Membership.new(user_id: current_user.id, usergroup_id: org.id)
          @membership.save
          flash[:notice] = "You joined the group you were invited to!"
-         redirect_to usergroups_path
       end
       session[:user_id] = @user.id
       flash[:notice] = "You have signed up successfully!"

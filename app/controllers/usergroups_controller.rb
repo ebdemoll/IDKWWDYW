@@ -28,11 +28,8 @@ class UsergroupsController < ApplicationController
         @submit = true
       end
     end
-    @membership = Membership.find_by(usergroup_id: @usergroup.id)
-    if @membership.user_id == current_user.id
-      @memberships = []
-      @memberships << User.find_by(id: @membership.user_id)
-    else
+    @memberships = Membership.find_by(usergroup_id: @usergroup.id)
+    if Membership.find_by(user_id: current_user.id, usergroup_id: @usergroup.id).nil?
       redirect_to usergroups_path
       flash[:notice] = "You Do Not Belong to That Group"
     end
@@ -61,7 +58,7 @@ class UsergroupsController < ApplicationController
     @invite = Invite.new
   end
 
-  
+
    private
 
    def usergroup_params

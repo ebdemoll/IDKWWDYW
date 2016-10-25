@@ -39,9 +39,8 @@ class UsersController < ApplicationController
     @preferences.each do |preference|
       preference.destroy
     end
-    session[:uid] = nil
     @user.destroy
-    redirect_to root_path
+    redirect_to logout_path
   end
 
   private

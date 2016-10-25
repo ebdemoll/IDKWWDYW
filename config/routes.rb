@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   match '/preferences/create', :to => "preferences#create", via: [:get, :post]
 
+  match '/preferences/destroy', :to => "preferences#destroy", via: [:delete]
+
   resources :preferences
 
   resources :invites

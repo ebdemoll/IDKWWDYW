@@ -112,6 +112,7 @@
   padding: 20px;
   font-family: 'Raleway';
   font-size: 70px;
+  color: white;
 }
 
 .no-top-padding {
@@ -124,7 +125,8 @@
 }
 
 .submit-button {
-  background-color: #ABCCBD;
+  background-color: #E4DED0;
+  border: solid;
 }
 
 .show-profile {
@@ -140,11 +142,13 @@
 }
 
 .list-item {
-  background-color: #ABCCBD;
-  width: 200px;
+  background-color: #E4DED0;
+  width: 300px;
   margin: auto;
-  box-shadow: 0 -1px 5px black;
   font-size: 20px;
+  font-family: 'Raleway';
+  padding: 10px;
+  border: solid;
 }
 
 .home-page {
@@ -170,6 +174,20 @@
   right: 0;
 }
 
+.index-page {
+  position: absolute;
+  z-index: 1;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  left: 0;
+  right: 0;
+  width: 70%;
+  background-color: #E4DED0;
+  height: 95%;
+}
+
 .log-in-page {
   width: 40%;
   display: center;
@@ -183,4 +201,14 @@
 .generic-buttons {
   background-color: #E4DED0;
   border: solid;
+  padding: 5px;
+}
+
+
+.group-members {
+  text-align: center;
+}
+
+.recommendation {
+  text-align: center;
 }

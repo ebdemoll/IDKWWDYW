@@ -1,9 +1,14 @@
-<h1 class="show-header"> Groups You Belong To </h1>
+<div class="index-page">
+  <h1 class="show-header"> Groups You Belong To </h1>
 
-<div class="groups-list">
-<% unless @usergroups.nil? %>
-  <% @usergroups.each do |usergroup| %>
-    <ul class="list-item"> <%= link_to usergroup.name, usergroup %></ul>
+  <div class="groups-list">
+  <% unless @usergroups.nil? %>
+    <% @usergroups.each do |usergroup| %>
+      <ul class="list-item"> <%= link_to usergroup.name, usergroup %></ul>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>
+
+
+<%= image_tag href="https://static.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg", class:"welcome-image" %>

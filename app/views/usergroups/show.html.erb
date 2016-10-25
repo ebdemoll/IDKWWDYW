@@ -2,9 +2,9 @@
   <h2 class="show-header"><%= @usergroup.name %></h2>
   <div class="group-members">
      <h4>Group Members</h4>
-         <% @memberships.each do |member| %>
-           <li><%= member.name  %>
-             <% if current_user.preferences.empty? %>
+         <% @usergroup.users.each do |user| %>
+           <li><%= user.name  %>
+             <% if user.preferences.empty? %>
                  (This user has not submitted their preferences.)
                <% else %>
                  (This user has submitted their prefences.)

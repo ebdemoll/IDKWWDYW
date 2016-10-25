@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_to usergroups_path
     else
       flash[:danger] = 'Invalid email/password combination'
-      render :new
+      redirect_to root_path
     end
 
   end

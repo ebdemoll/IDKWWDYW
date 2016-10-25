@@ -31,12 +31,12 @@ class App extends Component {
   render() {
     let recommendations = this.state.recommendations;
     return (
-      <div>
-          <h1 className="show-header">Your Recommendation</h1>
+      <div className="group-members">
+          <h4>Your Recommendation</h4>
           <RecommendationList
             recommendations={recommendations}
           />
-          <a href="/preferences/destroy" className="back-link top-padded">Start Over</a>
+          <a href="/preferences/destroy" className="generic-buttons">Start Over</a>
       </div>
     );
   }

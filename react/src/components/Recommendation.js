@@ -12,7 +12,7 @@ const Recommendation = props => {
         <h3>{name}</h3>
         <h4>{address}</h4>
         <h4>{phone}</h4>
-        <h4>{rating}</h4>
+        <h4>Yelp Rating: {rating}</h4>
       </div>
   );
 };

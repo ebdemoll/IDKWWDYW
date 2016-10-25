@@ -40,6 +40,7 @@ class PreferencesController < ApplicationController
     recommendation.each do |rec|
       rec.destroy
     end
+
     redirect_to usergroup_path(@usergroup)
   end
 

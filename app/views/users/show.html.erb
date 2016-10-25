@@ -3,7 +3,11 @@
 
   <div class="profile-list">
     <ul> Name: <%= current_user.name %> </ul>
+
+    <%= link_to "Delete Account", '/users/destroy', method: :delete, class:"generic-buttons" %>
+
   </div>
+
 </div>
 
 <%= image_tag href="https://static.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg", class:"welcome-image" %>

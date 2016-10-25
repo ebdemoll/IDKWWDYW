@@ -29,6 +29,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(current_user.id)
+    @memberships = Membership.where(user_id: current_user.id)
+    @memberships.each do |membership|
+      membership.destroy
+    end
+    @preferences = Preference.where(user_id: current_user.id)
+    @preferences.each do |preference|
+      preference.destroy
+    end
+    session[:uid] = nil
+    @user.destroy
+    redirect_to root_path
+  end
+
   private
 
   def user_params

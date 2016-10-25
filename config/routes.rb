@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
-  resources :users
 
-  match '/privacy_policy', :to => 'pages#privacy_policy', via: [:get]
+  match '/users/destroy', :to => "users#destroy", via: [:delete]
+
+  resources :users
 
   root to: "home#show"
 
@@ -20,13 +21,13 @@ Rails.application.routes.draw do
 
   match '/preferences/create', :to => "preferences#create", via: [:get, :post]
 
-  match '/preferences/destroy', :to => "preferences#destroy", via: [:delete]
+  match '/preferences/destroy', :to => "preferences#destroy", via: [:get, :post]
 
   resources :preferences
 
   resources :invites
 
-
+  match '/memberships/destroy', :to => "memberships#destroy", via: [:delete]
 
   match '/memberships/create', :to => "memberships#create", via: [:get, :post]
 

@@ -124,7 +124,8 @@
 }
 
 .submit-button {
-  background-color: #ABCCBD;
+  background-color: #E4DED0;
+  border: solid;
 }
 
 .show-profile {
@@ -140,11 +141,13 @@
 }
 
 .list-item {
-  background-color: #ABCCBD;
-  width: 200px;
+  background-color: #E4DED0;
+  width: 300px;
   margin: auto;
-  box-shadow: 0 -1px 5px black;
   font-size: 20px;
+  font-family: 'Raleway';
+  padding: 10px;
+  border: solid;
 }
 
 .home-page {
@@ -183,4 +186,14 @@
 .generic-buttons {
   background-color: #E4DED0;
   border: solid;
+  padding: 5px;
+}
+
+#show-row {
+  margin-bottom: 30px;
+  background-color: white;
+}
+
+.show-image {
+  width: 600px;
 }

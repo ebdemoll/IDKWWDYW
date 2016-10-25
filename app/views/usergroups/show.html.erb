@@ -1,34 +1,54 @@
-<h1 class="show-header"> <%= @usergroup.name %></h1> <br>
+<h1 class="show-header"> <%= @usergroup.name %></h1>
 
-<div> <h4> Group Members </h4>
-<% @memberships.each do |member| %>
-  <li><%= member.name  %>
-    <% if current_user.preferences.empty? %>
-        (This user has not submitted their preferences.)
-      <% else %>
-        (This user has submitted their prefences.)
-    <% end %>
-  </li>
-<% end %>
-</div>
+ <div class="row" id="show-row">
+   <div class="large-4 columns">
+     <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg", class="show-image">
+   </div>
+   <div class="large-8 columns">
+     <h4>Group Members</h4>
+     <div class="row">
+       <div class="large-6 columns">
+         <% @memberships.each do |member| %>
+           <li><%= member.name  %>
+             <% if current_user.preferences.empty? %>
+                 (This user has not submitted their preferences.)
+               <% else %>
+                 (This user has submitted their prefences.)
+             <% end %>
+           </li>
+         <% end %>
+       </div>
+       <div class="large-6 columns">
+         <%= link_to "Invite New User to Group", new_invite_path, class:"generic-buttons" %>
+       </div>
+     </div>
+   </div>
+ </div>
 
-<%= link_to "Invite New User to Group", new_invite_path %>
+<br>
 
-<% if @ready == false %>
-<%= render 'preferencesform' %>
-<% end %>
+ <div class="row" id="show-row">
+   <div class="large-8 columns">
+     <% if @ready == false %>
+     <%= render 'preferencesform' %>
+     <% end %>
 
-<% if @submit == true  %>
-  <%= link_to "Get Your Restaurant Recommendation", '/recommendations/create' %>
-<% end %>
+     <% if @submit == true  %>
+       <%= link_to "Get Your Restaurant Recommendation", '/recommendations/create' %>
+     <% end %>
 
-<% if @recommendation %>
-<div class="recommendation">
-  <h3> Your Recommendation </h3>
-  <%= @recommendation.name %>
-  <%= @recommendation.address %>
-  <%= @recommendation.phone %>
-  <%= @recommendation.yelp_rating %>
-  <div id="app"> </div>
-</div>
-<% end %>
+     <% if @recommendation %>
+     <div class="recommendation">
+       <h3> Your Recommendation </h3>
+       <%= @recommendation.name %>
+       <%= @recommendation.address %>
+       <%= @recommendation.phone %>
+       <%= @recommendation.yelp_rating %>
+       <div id="app"> </div>
+     </div>
+     <% end %>
+   </div>
+   <div class="large-4 columns">
+     <img src="http://www.remodelista.com/wp-content/uploads/2015/03/fields/septime-dripping-candles-700x522.jpg", class="show-image">
+   </div>
+ </div>

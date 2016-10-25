@@ -185,7 +185,8 @@
   right: 0;
   width: 70%;
   background-color: #E4DED0;
-  height: 95%;
+  height: 98%;
+  text-align: center;
 }
 
 .log-in-page {
@@ -207,8 +208,13 @@
 
 .group-members {
   text-align: center;
+  padding: 3px;
 }
 
 .recommendation {
   text-align: center;
+}
+
+.no-top-padding {
+  padding: 0px;
 }

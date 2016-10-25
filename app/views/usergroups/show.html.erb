@@ -1,9 +1,7 @@
 <div class="index-page">
-  <h1 class="show-header"><%= @usergroup.name %></h1>
-
+  <h2 class="show-header"><%= @usergroup.name %></h2>
   <div class="group-members">
      <h4>Group Members</h4>
-
          <% @memberships.each do |member| %>
            <li><%= member.name  %>
              <% if current_user.preferences.empty? %>
@@ -14,20 +12,18 @@
            </li>
          <% end %>
          <br>
-
          <%= link_to "Invite New User to Group", new_invite_path, class:"generic-buttons" %>
+         <%= link_to "Leave This Group", '/usergroups/destroy', method: :delete, class:"generic-buttons" %>
+
     </div>
 <br>
-<br>
-
   <% if @ready == false %>
     <%= render 'preferencesform' %>
   <% end %>
-
   <div id="app"> </div>
-
-
-
+  <br>
+  <br>
+  <br>
 </div>
 
 <%= image_tag href="https://static.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg", class:"welcome-image" %>

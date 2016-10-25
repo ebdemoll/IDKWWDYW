@@ -61,6 +61,7 @@ class UsergroupsController < ApplicationController
     @invite = Invite.new
   end
 
+  
    private
 
    def usergroup_params

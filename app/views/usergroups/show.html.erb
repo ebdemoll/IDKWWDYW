@@ -24,20 +24,20 @@
      <%= render 'preferencesform' %>
      <% end %>
 
-     <% if @submit == true  %>
-       <%= link_to "Get Your Restaurant Recommendation", '/recommendations/create' %>
-     <% end %>
 
-     <% if @recommendation %>
-     <div class="recommendation">
-       <h3> Your Recommendation </h3>
-       <%= @recommendation.name %>
-       <%= @recommendation.address %>
-       <%= @recommendation.phone %>
-       <%= @recommendation.yelp_rating %>
-       <div id="app"> </div>
-     </div>
-     <% end %>
+       <div class="recommendation">
+         <% if @recommendation %>
+           <h3> Your Recommendation </h3>
+           <%= @recommendation.name %>
+           <%= @recommendation.address %>
+           <%= @recommendation.phone %>
+           <%= @recommendation.yelp_rating %>
+           <div id="app"> </div>
+           <br>
+           <%= link_to "Start Over", preferences_destroy_path, method: :delete, class:"generic-buttons" %>
+         <% end %>
+       </div>
+
 
 </div>
 

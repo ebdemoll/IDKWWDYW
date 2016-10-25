@@ -7,9 +7,22 @@ class PreferencesController < ApplicationController
   def create
     @preference = Preference.new(preferences_params)
     @usergroupshow = Usergroup.find(session[:ugid])
+    users = @usergroupshow.users
     if @preference.save
-      redirect_to usergroup_path(@usergroupshow)
-      flash[:notice] = "Preferences updated"
+      users.each do |user|
+        if user.preferences.empty?
+          @submit = false
+          break
+        else !user.preferences.empty? && @recommendation.nil?
+          @submit = true
+        end
+      end
+      if @submit == true
+        redirect_to '/recommendations/create'
+      else
+        redirect_to usergroup_path(@usergroupshow)
+        flash[:notice] = "Preferences updated"
+      end
     else
       flash[:notice] = @preference.errors.full_messages.join(", ")
       redirect_to usergroup_path(@usergroupshow)
@@ -17,9 +30,15 @@ class PreferencesController < ApplicationController
   end
 
   def destroy
-    deletepreferences = Preference.where(usergroup_id: @usergroup.id)
+    @usergroup_id = session[:ugid]
+    @usergroup = Usergroup.find(@usergroup_id)
+    deletepreferences = Preference.where(usergroup_id: @usergroup_id)
     deletepreferences.each do |preference|
       preference.destroy
+    end
+    recommendation = Recommendation.where(usergroup_id: @usergroup_id)
+    recommendation.each do |rec|
+      rec.destroy
     end
     redirect_to usergroup_path(@usergroup)
   end

@@ -13,7 +13,6 @@ class RecommendationsController < ApplicationController
 
   def create
     @usergroup = Usergroup.find(session[:ugid])
-    @chooser = User.find(@usergroup.chooser)
     if @usergroup.chooser.nil?
       @chooser = @usergroup.users.first
     else

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
 
-  match '/users/destroy', :to => "users#destroy", via: [:delete]
+  match '/users/destroy', :to => "users#destroy", via: [:get, :post]
 
   resources :users
 

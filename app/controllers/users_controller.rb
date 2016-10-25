@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(current_user.id)
+    @user = User.find_by(id: current_user.id)
     @memberships = Membership.where(user_id: current_user.id)
     @memberships.each do |membership|
       membership.destroy

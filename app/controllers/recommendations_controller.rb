@@ -1,9 +1,10 @@
 class RecommendationsController < ApplicationController
   def index
-    @recommendation = Recommendation.find_by(usergroup_id: session[:ugid])
+    @recommendations = []
+    @recommendations << Recommendation.find_by(usergroup_id: session[:ugid])
     respond_to do |format|
       format.html
-      format.json { render json: @yelp_data }
+      format.json { render json: @recommendations}
     end
   end
 

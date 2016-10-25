@@ -20,23 +20,12 @@
 <br>
 <br>
 
-     <% if @ready == false %>
-     <%= render 'preferencesform' %>
-     <% end %>
+  <% if @ready == false %>
+    <%= render 'preferencesform' %>
+  <% end %>
 
+  <div id="app"> </div>
 
-       <div class="recommendation">
-         <% if @recommendation %>
-           <h3> Your Recommendation </h3>
-           <%= @recommendation.name %>
-           <%= @recommendation.address %>
-           <%= @recommendation.phone %>
-           <%= @recommendation.yelp_rating %>
-           <div id="app"> </div>
-           <br>
-           <%= link_to "Start Over", preferences_destroy_path, method: :delete, class:"generic-buttons" %>
-         <% end %>
-       </div>
 
 
 </div>

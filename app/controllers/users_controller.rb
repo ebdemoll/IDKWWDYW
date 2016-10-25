@@ -12,8 +12,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @token = params[:invite_token]
-    session[:token] = @token
     if @user.save
       session[:user_id] = @user.id
       if session[:token] != nil

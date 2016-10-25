@@ -41,7 +41,6 @@ feature 'User submits their personal preferences for dinner' do
     fill_in 'Location', with: "Boston, MA"
     click_button 'Submit Preferences'
 
-    expect(page).to have_content('Preferences updated')
     expect(page).to have_content('(This user has submitted their prefences.)')
   end
   scenario 'User who has submitted preferences does not see a form to submit preferences' do

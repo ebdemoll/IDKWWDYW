@@ -1,10 +1,16 @@
-<div class="no-top-padding">
-  <%= form_for @invite , :url => invites_path do |f| %>
-    <div class="field">
-      <%= f.hidden_field :usergroup_id, value: @usergroup_id %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <%= f.submit 'Send' %>
-    </div>
-  <% end %>
+<div class="index-page">
+  <h1 class="show-header">Invite</h1>
+
+  <div class="no-top-padding">
+    <%= form_for @invite , :url => invites_path do |f| %>
+      <div class="field">
+        <%= f.hidden_field :usergroup_id, value: @usergroup_id %>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+        <%= f.submit 'Send' %>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+<%= image_tag href="https://static.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg", class:"welcome-image" %>

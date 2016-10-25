@@ -15,13 +15,13 @@ class UsersController < ApplicationController
     @token = params[:invite_token]
     session[:token] = @token
     if @user.save
+      session[:user_id] = @user.id
       if session[:token] != nil
          org =  Invite.find_by_token(session[:token]).usergroup #find the user group attached to the invite
          @membership = Membership.new(user_id: current_user.id, usergroup_id: org.id)
          @membership.save
          flash[:notice] = "You joined the group you were invited to!"
       end
-      session[:user_id] = @user.id
       flash[:notice] = "You have signed up successfully!"
       redirect_to usergroups_path
     else

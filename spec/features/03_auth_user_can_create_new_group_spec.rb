@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require 'spec_helper'
 require 'rails_helper'
 require 'factory_girl_rails'
@@ -33,6 +32,5 @@ describe 'Unauth user can create and join a new group' do
 
       expect(page).to have_content "TestGroup"
     end
-
   end
 end

@@ -1,7 +1,6 @@
-# frozen_string_literal: true
 require 'spec_helper'
 require 'rails_helper'
-# frozen_string_literal: true
+
 describe 'Unauth user can sign in' do
 
   feature 'Unauthorized can signup' do
@@ -14,7 +13,6 @@ describe 'Unauth user can sign in' do
     scenario 'User can click signup button' do
       visit '/'
       click_link 'Sign Up'
-
       fill_in 'Name', with: "Foobington III"
       expect(page).to have_field('Email')
       expect(page).to have_field('Password')
@@ -24,12 +22,10 @@ describe 'Unauth user can sign in' do
     scenario 'User enters information and signs up' do
       visit '/'
       click_link 'Sign Up'
-
       fill_in 'Name', with: "Foobington III"
       fill_in 'Email', with: 'test_user@gmail.com'
       fill_in 'Password', with: 'scooped'
       fill_in 'Confirmation', with: 'scooped'
-
       click_button 'Create my account'
 
       expect(page).to have_content('Signed in as Foobington III')
@@ -44,12 +40,10 @@ describe 'Unauth user can sign in' do
 
       visit '/'
       click_link 'Sign Up'
-
       fill_in 'Name', with: "Foobington III"
       fill_in 'Email', with: 'second_user@gmail.com'
       fill_in 'Password', with: 'scooped'
       fill_in 'Confirmation', with: 'scooped'
-
       click_button 'Create my account'
 
       expect(page).to have_content('Email has already been taken')
@@ -58,12 +52,10 @@ describe 'Unauth user can sign in' do
     scenario 'User enters a password confirmation that does not match password' do
       visit '/'
       click_link 'Sign Up'
-
       fill_in 'Name', with: "Foobington III"
       fill_in 'Email', with: 'third_user@gmail.com'
       fill_in 'Password', with: 'scooped'
       fill_in 'Confirmation', with: 'blahbl'
-
       click_button 'Create my account'
 
       expect(page).to have_content(
@@ -74,12 +66,10 @@ describe 'Unauth user can sign in' do
     scenario 'User enters a password that is too short' do
       visit '/'
       click_link 'Sign Up'
-
       fill_in 'Name', with: "Foobington III"
       fill_in 'Email', with: 'fourth_user@gmail.com'
       fill_in 'Password', with: 'scoop'
       fill_in 'Confirmation', with: 'scoop'
-
       click_button 'Create my account'
 
       expect(page).to have_content(

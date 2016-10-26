@@ -112,7 +112,7 @@
   padding: 20px;
   font-family: 'Raleway';
   font-size: 70px;
-  color: white;
+  color: black;
 }
 
 .no-top-padding {
@@ -175,6 +175,7 @@
 }
 
 .index-page {
+  opacity: 0.90;
   position: absolute;
   z-index: 1;
   color: black;

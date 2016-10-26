@@ -33,7 +33,6 @@ feature 'User sends email invite to another person' do
     click_button 'Add New Group'
     click_link "Your Groups"
     click_link "testgroup"
-
     click_link 'Invite New User to Group'
 
     expect(page).to have_button 'Send'

@@ -43,6 +43,7 @@ feature 'User submits their personal preferences for dinner' do
 
     expect(page).to have_content('(This user has submitted their prefences.)')
   end
+  
   scenario 'User who has submitted preferences does not see a form to submit preferences' do
     login(user_1)
     click_link "Add New Group"

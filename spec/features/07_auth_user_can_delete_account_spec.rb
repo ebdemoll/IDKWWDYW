@@ -15,14 +15,13 @@ describe 'Authorized user can delete account' do
       expect(page).to have_link("Delete Account")
     end
 
+    scenario 'User can click link and be removed from the site' do
+      login(user_1)
+      click_link "Your Profile"
+      click_link "Delete Account"
 
-      scenario 'User can click link and be removed from the site' do
-        login(user_1)
-        click_link "Your Profile"
-        click_link "Delete Account"
-
-        expect(page).to have_content("Welcome")
-        expect(page).to have_content("Please sign in before continuing!")
-      end
+      expect(page).to have_content("Welcome")
+      expect(page).to have_content("Please sign in before continuing!")
+    end
   end
 end

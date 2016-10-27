@@ -18,6 +18,7 @@
  .body {
    background-color: #E4DED0;
  }
+ 
  .header {
     text-align: center;
     background: white;
@@ -159,6 +160,7 @@
 .welcome-image {
   position: relative;
   z-index: -1;
+  background-repeat: repeat-y;
 }
 
 .welcome {
@@ -203,6 +205,7 @@
   background-color: #E4DED0;
   border: solid;
   padding: 5px;
+  align: center;
 }
 
 

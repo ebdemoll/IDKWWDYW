@@ -12,23 +12,9 @@ class UsergroupsController < ApplicationController
     @preference = Preference.new
     @usergroup = Usergroup.find(params[:id])
     session[:ugid] = @usergroup.id
-    userpreference = Preference.find_by(user_id: current_user.id)
     @recommendation = Recommendation.find_by(usergroup_id: @usergroup.id)
     need_preference_form?
-    users = @usergroup.users
-    users.each do |user|
-      if user.preferences.empty?
-        @submit = false
-        break
-      else !user.preferences.empty? && @recommendation.nil?
-        @submit = true
-      end
-    end
-    @membership = Membership.find_by(user_id: current_user.id, usergroup_id: @usergroup.id)
-    if @membership.nil?
-      redirect_to usergroups_path
-      flash[:notice] = "You Do Not Belong to That Group"
-    end
+    belongs_to_group?(@usergroup.id)
   end
 
   def new
@@ -67,6 +53,14 @@ class UsergroupsController < ApplicationController
        @ready = false
      else
        @ready = true
+     end
+   end
+
+   def belongs_to_group?(usergroup_id)
+     @membership = Membership.find_by(user_id: current_user.id, usergroup_id: usergroup_id)
+     if @membership.nil?
+       redirect_to usergroups_path
+       flash[:notice] = "You Do Not Belong to That Group"
      end
    end
 

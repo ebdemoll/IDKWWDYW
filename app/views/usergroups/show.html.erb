@@ -2,28 +2,25 @@
   <h2 class="show-header"><%= @usergroup.name %></h2>
   <div class="group-members">
      <h4>Group Members</h4>
-         <% @usergroup.users.each do |user| %>
-           <li><%= user.name  %>
-             <% if user.preferences.empty? %>
-                 (This user has not submitted their preferences.)
-               <% else %>
-                 (This user has submitted their prefences.)
-             <% end %>
-           </li>
-         <% end %>
-         <br>
-         <%= link_to "Invite New User to Group", new_invite_path, class:"generic-buttons" %>
-         <%= link_to "Leave This Group", '/memberships/destroy', method: :delete, class:"generic-buttons" %>
+       <% @usergroup.users.each do |user| %>
+         <ul><%= user.name  %><br>
+           <% if user.preferences.empty? %>
+               (This user has not submitted their preferences.)
+             <% else %>
+               (This user has submitted their prefences.)
+           <% end %>
+         </ul>
+       <% end %>
 
-    </div>
-<br>
+     <%= link_to "Invite New User to Group", new_invite_path, class:"generic-buttons" %>
+     <%= link_to "Leave This Group", '/memberships/destroy', method: :delete, class:"generic-buttons" %>
+  </div>
+<hr width="55%">
   <% if @ready == false %>
     <%= render 'preferencesform' %>
   <% end %>
+<hr width="55%">
   <div id="app"> </div>
-  <br>
-  <br>
-  <br>
+<br>
 </div>
-
 <%= image_tag href="https://static.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg", class:"welcome-image" %>

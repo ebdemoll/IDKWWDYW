@@ -9,20 +9,8 @@ class PreferencesController < ApplicationController
     @usergroupshow = Usergroup.find(session[:ugid])
     users = @usergroupshow.users
     if @preference.save
-      users.each do |user|
-        if user.preferences.empty?
-          @submit = false
-          break
-        else !user.preferences.empty? && @recommendation.nil?
-          @submit = true
-        end
-      end
-      if @submit == true
-        redirect_to '/recommendations/create'
-      else
-        redirect_to usergroup_path(@usergroupshow)
-        flash[:notice] = "Preferences updated"
-      end
+      all_preferences_submitted?(users)
+      make_recommendation?
     else
       flash[:notice] = @preference.errors.full_messages.join(", ")
       redirect_to usergroup_path(@usergroupshow)
@@ -40,15 +28,32 @@ class PreferencesController < ApplicationController
     recommendation.each do |rec|
       rec.destroy
     end
-
     redirect_to usergroup_path(@usergroup)
   end
 
   private
 
-
    def preferences_params
      params.require(:preference).permit(:user_id, :usergroup_id, :find, :location, :category)
    end
 
+   def all_preferences_submitted?(users)
+     users.each do |user|
+       if user.preferences.empty?
+         @submit = false
+         break
+       else !user.preferences.empty? && @recommendation.nil?
+         @submit = true
+       end
+     end
+   end
+
+   def make_recommendation?
+     if @submit == true
+       redirect_to '/recommendations/create'
+     else
+       redirect_to usergroup_path(@usergroupshow)
+       flash[:notice] = "Preferences updated"
+     end
+   end
 end

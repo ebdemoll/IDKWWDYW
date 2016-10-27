@@ -6,31 +6,24 @@ Rails.application.routes.draw do
   get '/logout',  to: 'sessions#destroy'
 
   match '/users/destroy', :to => "users#destroy", via: [:get, :post]
-
   resources :users
 
   root to: "home#show"
 
   match '/usergroups/search', :to => "usergroups#search", via: [:get, :post]
-
   resources :usergroups
 
   match '/recommendations/create', :to => "recommendations#create", via: [:get, :post]
-
   resources :recommendations
 
   match '/preferences/create', :to => "preferences#create", via: [:get, :post]
-
   match '/preferences/destroy', :to => "preferences#destroy", via: [:get, :post]
-
   resources :preferences
 
-  resources :invites
+  resources :invites, only: [:new, :create]
 
   match '/memberships/destroy', :to => "memberships#destroy", via: [:delete]
-
   match '/memberships/create', :to => "memberships#create", via: [:get, :post]
-
   resources :memberships
 
 end

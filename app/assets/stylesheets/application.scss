@@ -109,10 +109,9 @@
 
 .show-header {
   text-align: center;
-  padding: 20px;
   font-family: 'Raleway';
   font-size: 70px;
-  color: black;
+  color: white;
 }
 
 .no-top-padding {
@@ -209,7 +208,7 @@
 
 .group-members {
   text-align: center;
-  padding: 3px;
+  // padding: 5px;
 }
 
 .recommendation {
@@ -218,4 +217,5 @@
 
 .no-top-padding {
   padding: 0px;
+  margin-bottom: 5px;
 }

@@ -4,7 +4,7 @@
   <div class="groups-list">
   <% unless @usergroups.nil? %>
     <% @usergroups.each do |usergroup| %>
-      <ul class="list-item"> <%= link_to usergroup.name, usergroup %></ul>
+      <ul class="list-item"> <%= link_to usergroup.name, usergroup %></ul><br>
     <% end %>
   <% end %>
   </div>

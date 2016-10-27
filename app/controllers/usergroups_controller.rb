@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 class UsergroupsController < ApplicationController
     def index
-      @membership = Membership.find_by(user_id: current_user.id)
-      unless @membership.nil?
-          @usergroups = []
-          @usergroups << Usergroup.find_by(id: @membership.usergroup_id)
+      @memberships = Membership.where(user_id: current_user.id)
+      unless @memberships.nil?
+        @usergroups = []
+        @memberships.each do |membership|
+          @usergroups << Usergroup.find(membership.usergroup_id)
+        end
       end
     end
 

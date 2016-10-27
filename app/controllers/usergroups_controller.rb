@@ -2,11 +2,11 @@
 class UsergroupsController < ApplicationController
     def index
       @memberships = Membership.where(user_id: current_user.id)
-      unless @membership.nil?
+      unless @memberships.nil?
+        @usergroups = []
         @memberships.each do |membership|
-          @usergroups = []
-          @usergroups << Usergroup.find_by(id: membership.usergroup_id)
-        end 
+          @usergroups << Usergroup.find(membership.usergroup_id)
+        end
       end
     end
 

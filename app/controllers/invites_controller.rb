@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 class InvitesController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
     @usergroup_id = session[:ugid]
     @invite = Invite.new
@@ -36,5 +30,4 @@ class InvitesController < ApplicationController
   def invite_params
     params.require(:invite).permit(:usergroup_id, :email)
   end
-
 end

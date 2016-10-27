@@ -14,6 +14,15 @@ class RecommendationsController < ApplicationController
 
   def create
     @usergroup = Usergroup.find(session[:ugid])
+    who_decides?
+    yelp_call
+    @recommendation = Recommendation.create(usergroup_id: @usergroup.id, name: @name, phone: @phone, address: @address, yelp_rating: @yelp_rating)
+    redirect_to usergroup_path(@usergroup)
+  end
+
+  private
+
+  def who_decides?
     if @usergroup.chooser.nil?
       @chooser = @usergroup.users.first
     else
@@ -22,8 +31,11 @@ class RecommendationsController < ApplicationController
           @chooser = user
         end
       end
-    @usergroup.update_attribute(:chooser, @chooser.id)
+      @usergroup.update_attribute(:chooser, @chooser.id)
+    end
   end
+
+  def yelp_call
     params = {
       term: @chooser.preferences[0].find,
       category_filter: ('restaurants'),
@@ -36,8 +48,6 @@ class RecommendationsController < ApplicationController
       @address = result.location.display_address[0]
       @yelp_rating = result.rating
     end
-    @recommendation = Recommendation.create(usergroup_id: @usergroup.id, name: @name, phone: @phone, address: @address, yelp_rating: @yelp_rating)
-    redirect_to usergroup_path(@usergroup)
   end
 
 end

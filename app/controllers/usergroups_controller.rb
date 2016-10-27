@@ -33,7 +33,6 @@ class UsergroupsController < ApplicationController
       end
     end
 
-
     def edit
       @usergroup = Usergroup.find(params[:id])
       session[:ugid] = @usergroup.id
@@ -62,5 +61,4 @@ class UsergroupsController < ApplicationController
        flash[:notice] = "You Do Not Belong to That Group"
      end
    end
-
 end

@@ -36,6 +36,7 @@ class App extends Component {
           <RecommendationList
             recommendations={recommendations}
           />
+          <br />
           <a href="/preferences/destroy" className="generic-buttons">Start Over</a>
       </div>
     );

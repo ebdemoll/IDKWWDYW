@@ -14,11 +14,7 @@ class UsergroupsController < ApplicationController
     session[:ugid] = @usergroup.id
     userpreference = Preference.find_by(user_id: current_user.id)
     @recommendation = Recommendation.find_by(usergroup_id: @usergroup.id)
-    if userpreference.nil?
-      @ready = false
-    else
-      @ready = true
-    end
+    need_preference_form?
     users = @usergroup.users
     users.each do |user|
       if user.preferences.empty?
@@ -29,7 +25,7 @@ class UsergroupsController < ApplicationController
       end
     end
     @membership = Membership.find_by(user_id: current_user.id, usergroup_id: @usergroup.id)
-    if @membership.nil? 
+    if @membership.nil?
       redirect_to usergroups_path
       flash[:notice] = "You Do Not Belong to That Group"
     end
@@ -63,6 +59,15 @@ class UsergroupsController < ApplicationController
 
    def usergroup_params
      params.require(:usergroup).permit(:name, :user)
+   end
+
+   def need_preference_form?
+     userpreference = Preference.find_by(user_id: current_user.id)
+     if userpreference.nil?
+       @ready = false
+     else
+       @ready = true
+     end
    end
 
 end

@@ -11,13 +11,13 @@ Application Link: https://idkwdyw-nothing-fight.herokuapp.com/
 
 List of Features:
 ------------------
- - User sign-up/log-in with custom log-in
+ - User sign-up/log-in with custom authorization
  - Ability to create and join a new group or "couple"
  - Ability to send an email invitation to another person
  - Ability to follow link in invitation to sign up or log in and join group
  - Ability for each user in a group to input preferences for dinner
  - Recommendation generated using Yelp API
- - Recommendation section of show page live updates with React so users on any browser will see it as soon as it is available 
+ - Recommendation section of show page live updates with React so users on any browser will see it as soon as it is available
 
 
 
@@ -30,11 +30,11 @@ Outline of Technologies:
 - Foundation & CSS
 - ActionMailer
 - Factory Girl
-- API
+- Yelp API
 
 
 To Run Locally:
 ---------------------
-1. Make sure to bundle to install any Ruby dependencies.
+1. Run bundle to install any Ruby dependencies.
 2. Run npm install for any React dependencies.
 3. Run rails server and webpack-dev-server simultaneously.
